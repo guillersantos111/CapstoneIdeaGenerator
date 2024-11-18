@@ -1,0 +1,87 @@
+/* /Shared/Loader.razor.rz.scp.css */
+.loader[b-l79f7pi7f4] {
+    transform: rotateZ(45deg) translate(-50%, -50%);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    color: #b200ff;
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    z-index: 9999;
+}
+
+    .loader[b-l79f7pi7f4]:before,
+    .loader[b-l79f7pi7f4]:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        transform: rotateX(70deg);
+        animation: 1s spin-b-l79f7pi7f4 linear infinite;
+    }
+
+    .loader[b-l79f7pi7f4]:after {
+        color: #00ff21;
+        transform: rotateY(70deg);
+        animation-delay: .4s;
+    }
+
+@keyframes rotate-b-l79f7pi7f4 {
+    0% {
+        transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+}
+
+@keyframes rotateccw-b-l79f7pi7f4 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@keyframes spin-b-l79f7pi7f4 {
+    0%, 100% {
+        box-shadow: .2em 0px 0 0px currentcolor;
+    }
+
+    12% {
+        box-shadow: .2em .2em 0 0 currentcolor;
+    }
+
+    25% {
+        box-shadow: 0 .2em 0 0px currentcolor;
+    }
+
+    37% {
+        box-shadow: -.2em .2em 0 0 currentcolor;
+    }
+
+    50% {
+        box-shadow: -.2em 0 0 0 currentcolor;
+    }
+
+    62% {
+        box-shadow: -.2em -.2em 0 0 currentcolor;
+    }
+
+    75% {
+        box-shadow: 0px -.2em 0 0 currentcolor;
+    }
+
+    87% {
+        box-shadow: .2em -.2em 0 0 currentcolor;
+    }
+}

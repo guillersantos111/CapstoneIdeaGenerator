@@ -1,0 +1,51 @@
+﻿@page "/authentication"
+@inject NavigationManager Navigation
+@inherits AuthenticationBase
+
+@if (isLoading)
+{
+    <Loader />
+}
+else
+{
+    <MudGrid Justify="Justify.Center">
+
+        <MudContainer Class="text-center m-4 pt-20">
+            <MudText Style="color:white; font-weight: 500;" Typo="Typo.h3">
+                Admin Login
+            </MudText>
+        </MudContainer>
+
+        <MudPaper Class="d-flex justify-center align-center" Elevation="4" Style="width: 500px; height: 600px; margin-top: 30px;">
+            <MudContainer MaxWidth="MaxWidth.Small">
+                <MudCard Elevation="10">
+                    <MudCardContent>
+                        <MudText Typo="Typo.h5">Login</MudText>
+
+                        <MudTextField Class="mb-5" T="string" Label="Username" @bind-Value="login.Email" Variant="Variant.Outlined" FullWidth />
+                        <MudTextField Class="mb-10" T="string" Label="Password" @bind-Value="login.Password" Variant="Variant.Outlined" InputType="InputType.Password" FullWidth />
+
+                        @if (!string.IsNullOrEmpty(responseMessage))
+                        {
+                            <MudText Color="Color.Error">@responseMessage</MudText>
+                        }
+
+                        <MudButton Color="Color.Primary" FullWidth Style="height: 50px" OnClick="LoginOnClick" Variant="Variant.Filled" Disabled="isLoading">
+                            @if (isLoading)
+                            {
+                                <MudProgressCircular Indeterminate="true" Size="Size.Medium" />
+                            }
+                            else
+                            {
+                                @:Login
+                            }
+                        </MudButton>
+                        <MudContainer Class="mt-5">
+                            <MudLink OnClick="OpenForgotPasswordDialog">Forgot Password?</MudLink>
+                        </MudContainer>
+                    </MudCardContent>
+                </MudCard>
+            </MudContainer>
+        </MudPaper>
+    </MudGrid>
+}

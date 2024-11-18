@@ -1,0 +1,33 @@
+﻿@page "/editloginform"
+@inherits EditLoginBase
+@inject NavigationManager Navigation
+
+<MudDialog>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <MudCard>
+        <MudCardContent>
+            <MudText Typo="Typo.h5">Login</MudText>
+
+            <MudTextField T="string" Label="Email" @bind-Value="login.Email" Variant="Variant.Outlined" FullWidth />
+            <MudTextField T="string" Label="Password" @bind-Value="login.Password" Variant="Variant.Outlined" InputType="InputType.Password" FullWidth />
+
+            <MudButton Color="Color.Primary" FullWidth OnClick="HandleLogin" Disabled="isLoading">
+                @if (isLoading)
+                {
+                    <MudProgressCircular Indeterminate Size="Size.Medium" />
+                }
+                else
+                {
+                    @:Login
+                }
+            </MudButton>
+        </MudCardContent>
+    </MudCard>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <MudAlert Severity="Severity.Error">@errorMessage</MudAlert>
+    }
+</MudDialog>

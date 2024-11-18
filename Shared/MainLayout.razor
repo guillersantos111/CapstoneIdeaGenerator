@@ -1,0 +1,60 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<MudThemeProvider IsDarkMode="true" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+
+<MudLayout>
+    <MudContainer class="page">
+            <MudAppBar Style="background-color: rgb(134, 30, 255); z-index: 100" Elevation="5">
+                <MudContainer Class="d-none d-lg-flex justify-content-start">
+                <MudButton Class="m-3" Style="height: 40px; width: 50px; color: azure" Href="/authentication">Login</MudButton>
+                <MudButton Class="m-3" Style="height: 40px; width: 50px; color: azure" Href="">About</MudButton>
+                <MudButton Class="m-3" Style="height: 40px; width: 100px; color: azure" Href="/generator">Generator</MudButton>
+                <MudButton Class="m-3" Style="height: 40px; width: 100px; color: azure" Href="/ratings">Ratings</MudButton>
+                </MudContainer>
+
+                <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="@ToggleDrawer" Edge="Edge.End" Class="d-lg-none" />
+
+                <MudContainer Class="d-none d-lg-flex justify-content-end">
+                    <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.Facebook" Link="_blank" Target="_blank" />
+                    <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.LinkedIn" Target="_blank" />
+                    <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.GitHub" Link="https://github.com/guillersantos111" Target="_blank" />
+                </MudContainer>
+            </MudAppBar>
+        
+
+        <MudDrawer Breakpoint="Breakpoint.Sm" Class="d-lg-none" @bind-Open="drawerOpen" Color="Color.Dark" ClipMode="DrawerClipMode.Never" Anchor="Anchor.Right" Elevation="3">
+            <MudContainer Class="d-grid gap-5">
+                <MudContainer Class="d-grid row-cols-8 pt-5 ms-6">
+                    <MudButton Class="btn-appbar-menu mb-3" Style="height: 40px; width: 100px; color: azure" Href="/authentication">Login</MudButton>
+                    <MudButton Class="btn-appbar-menu mb-3" Style="height: 40px; width: 100px; color: azure" Href="">About</MudButton>
+                    <MudButton Class="btn-appbar-menu mb-3" Style="height: 40px; width: 100px; color: azure" Href="/generator">Generator</MudButton>
+                    <MudButton Class="m-3" Style="height: 40px; width: 100px; color: azure" Href="/ratings">Ratings</MudButton>
+                </MudContainer>
+                <MudContainer Class="gap-5 ms-2">
+                    <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.Facebook" Variant="Variant.Outlined" Link="https://www.facebook.com/guillersantos23" Target="_blank" />
+                    <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.LinkedIn" Variant="Variant.Outlined" Target="_blank" />
+                    <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.GitHub" Variant="Variant.Outlined" Link="https://github.com/guillersantos111" Target="_blank" />
+                </MudContainer>
+            </MudContainer>
+        </MudDrawer>
+
+        <MudContainer>
+            <MudContainer Class="content px-4">
+                @Body
+            </MudContainer>
+        </MudContainer>
+    </MudContainer>
+</MudLayout>
+
+@code {
+    private bool drawerOpen = false;
+
+    private void ToggleDrawer()
+    {
+        drawerOpen = !drawerOpen;
+    }
+}

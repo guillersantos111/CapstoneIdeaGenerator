@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapstoneIdeaGenerator.Client", "CapstoneIdeaGenerator.Client.csproj", "{3617AD71-626F-462A-8D89-6890D1F974B3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{24800655-F9AF-4DA3-A4D9-9D93CFB806AC} = {24800655-F9AF-4DA3-A4D9-9D93CFB806AC}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapstoneIdeaGenerator.Server", "..\CapstoneIdeaGenerator.Server\CapstoneIdeaGenerator.Server.csproj", "{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3617AD71-626F-462A-8D89-6890D1F974B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3617AD71-626F-462A-8D89-6890D1F974B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3617AD71-626F-462A-8D89-6890D1F974B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3617AD71-626F-462A-8D89-6890D1F974B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

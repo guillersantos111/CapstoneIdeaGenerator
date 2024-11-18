@@ -1,0 +1,25 @@
+﻿@page "/editcapstonedialog"
+@inherits EditCapstoneDialogBase
+
+
+<MudDialog DisableSidePadding = "false">
+    <DialogContent>
+        <EditForm Model="capstones" OnValidSubmit="Save">
+            <MudText Style="color: white; margin: 10px" Typo="Typo.h5">@((capstones.CapstoneId == 0) ? "Add New Capstone" : "Edit Capstone")</MudText>
+
+            <MudTextField T="string" Label="Titles" @bind-Value="capstones.Title" Required="true" />
+            <MudTextField T="string" Label="Descriptions" @bind-Value="capstones.Description" Required="true" />
+            <MudTextField T="string" Label="Industries" @bind-Value="capstones.Categories" Required="true" />
+            <MudTextField T="string" Label="Created By" @bind-Value="capstones.CreatedBy" Required="true" />
+            <MudTextField T="string" Label="Programming Languages" @bind-Value="capstones.ProgLanguages" Required="true" />
+            <MudTextField T="string" Label="Databases" @bind-Value="capstones.Databases" Required="true" />
+            <MudTextField T="string" Label="Frameworks" @bind-Value="capstones.Frameworks" Required="true" />
+            <MudTextField T="string" Label="Project Types" @bind-Value="capstones.ProjectType" Required="true" />
+
+            <MudCardActions Class="justify-content-center mt-lg-1">
+                <MudButton Class="appbar-menu me-4 w-50" Color="Color.Surface" OnClick="Save" Style="background-color: cornflowerblue">Save</MudButton>
+                <MudButton Class="appbar-menu ms-4 w-50" Color="Color.Surface" OnClick="Cancel" Style="background-color: coral">Cancel</MudButton>
+            </MudCardActions>
+        </EditForm>
+    </DialogContent>
+</MudDialog>

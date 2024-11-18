@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "CapstoneIdeaGenerator.Client.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

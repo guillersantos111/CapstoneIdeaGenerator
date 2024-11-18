@@ -1,0 +1,36 @@
+﻿@page "/adminratings"
+@inherits AdminRatingsBase
+@layout AdminLayout
+
+@if (isLoading)
+{
+    <Loader></Loader>
+}
+else
+{
+    <MudGrid Justify="Justify.Center">
+        <MudPaper Style="margin-top: 130px" Elevation="5">
+            <MudText Typo="Typo.h5" Style="color: white; margin: 20px">Rating View</MudText>
+            <MudTable Items="Ratings" Striped="true" Hover="true" Height="650px" Style="width: 900px" FixedHeader="true" Class="table-responsive-sm">
+                <HeaderContent>
+                    <MudTh>Rating ID</MudTh>
+                    <MudTh>Capstone ID</MudTh>
+                    <MudTh>User Code Tracker</MudTh>
+                    <MudTh>Title</MudTh>
+                    <MudTh>Rated On</MudTh>
+                    <MudTh>Ratings</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>@context.RatingId</MudTd>
+                    <MudTd>@context.CapstoneId</MudTd>
+                    <MudTd>@context.UserId</MudTd>
+                    <MudTd>@context.Title</MudTd>
+                    <MudTd>@context.RatedOn</MudTd>
+                    <MudTd>
+                        <MudRating SelectedValue="@context.RatingValue" MaxValue="5" ReadOnly="true" Size="Size.Small" Color="Color.Warning"></MudRating>
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudPaper>
+    </MudGrid>
+}
