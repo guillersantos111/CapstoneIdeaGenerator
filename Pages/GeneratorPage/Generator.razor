@@ -9,28 +9,25 @@ else
 {
     <MudGrid Justify="Justify.Center">
         <MudContainer Class="text-center mt-10">
-            <MudText Typo="Typo.h4" Class="ps-4 mb-5 mt-13" Style="font-weight: bolder; color: white">
+            <MudText Typo="Typo.h4" Class="ps-4 mb-5 mt-13" Style="font-weight: bolder; color: black">
                 Capstone Shared Ideas
             </MudText>
-            <MudText Typo="Typo.h6" Class="ps-1 mb-5" Style="font-weight: 100; color: white">
+            <MudText Typo="Typo.h6" Class="ps-1 mb-5" Style="font-weight: 100; color: black">
                 Discover your next Capstone Ideas!
             </MudText>
         </MudContainer>
 
         <MudItem Class="col-lg-12 row g-2">
-            <MudPaper Class="mud-paper-1 col-lg-4 ms-2 mb-6" Elevation="3">
+            <MudPaper Class="mud-paper-1 col-lg-4 ms-2 mb-6" Elevation="10">
                 <MudContainer Class="text-center">
                     <MudContainer>
                         <MudText Class="mt-5 fs-4">Filter</MudText>
                     </MudContainer>
                 </MudContainer>
 
-                <MudText Class="fs-6 ms-18 mt-5" Style="color: white">Categories</MudText>
-
                 <MudContainer Class="text-center">
-
                     <MudContainer>
-                        <MudSelect @bind-Value="selectedCategory" Class="p-4 mb-4" T="string" Label="Select Category" AnchorOrigin="Origin.BottomCenter" Style="width: 400px;">
+                        <MudSelect @bind-Value="selectedCategory" Class="p-4 mb-4" T="string" Label="Select Induestry" AnchorOrigin="Origin.BottomCenter" Style="width: 400px;">
                             @foreach (var category in categories)
                             {
                                 <MudSelectItem Value="@category">@category</MudSelectItem>
@@ -63,30 +60,33 @@ else
                 </MudContainer>
             </MudPaper>
 
-            @if (isGenerated)
-            {
-                <MudPaper Class="mud-paper-2 col-lg-8 ms-10" Elevation="3">
+
+            <MudPaper Class="mud-paper-2 col-lg-8 ms-10" Elevation="10">
+                @if (isGenerated)
+                {
                     <MudContainer Class="mt-5">
                         <MudContainer>
-                            <MudText Class="mb-3 fw-bolder" Style="color: white;" Typo="Typo.h5">@generatedCapstone?.Title</MudText>
-                            <MudText Class="text-opacity-25 fs-6 mb-2 mt-5" Style="color: darkgrey;">@generatedCapstone?.Description</MudText>
+                            <MudText Class="mb-3 fw-bolder" Style="color: black;" Typo="Typo.h5">@generatedCapstone?.Title</MudText>
+                            <MudText Class="text-opacity-25 fs-6 mb-2 mt-5" Style="color: gray;">@generatedCapstone?.Description</MudText>
                         </MudContainer>
                     </MudContainer>
 
-                    <MudContainer Class="mt-20 mb-5">
+                    <MudContainer Class="mt-10 mb-5">
                         <MudContainer Class="d-flex d-md-flex" Style="color: black;">
-                            <MudText Style="height: 20px; width: 100px; font-size: 15px; font-weight: bolder; text-align: center; background-color: aliceblue; border-radius: 50px; margin: 7px">@generatedCapstone?.ProgLanguages</MudText>
-                            <MudText Style="height: 20px; width: 100px; font-size: 15px; font-weight: bolder; text-align: center; background-color: aliceblue; border-radius: 50px; margin: 7px">@generatedCapstone?.Databases</MudText>
-                            <MudText Style="height: 20px; width: 100px; font-size: 15px; font-weight: bolder; text-align: center; background-color: aliceblue; border-radius: 50px; margin: 7px">@generatedCapstone?.Frameworks</MudText>
+                            <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: palegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.ProgLanguages</MudText>
+                            <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: palegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Databases</MudText>
+                            <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: palegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Frameworks</MudText>
                         </MudContainer>
                     </MudContainer>
 
-                    <MudContainer Class="mt-15 ms-8">
-                        <MudText Typo="Typo.h6" Class="fw-bold" Style="color: white;">Rate this Capstone Idea</MudText>
-                            <MudRating @bind-SelectedValue="Rating.RatingValue" Max="5" Size="Size.Medium" Class="mt-5" />
-                        <MudButton OnClick="SubmitRating" Color="Color.Primary" Class="mt-3">
-                            Submit Rating
-                        </MudButton>
+                    <MudContainer Class="mt-10 ms-8">
+                        <MudText Typo="Typo.h6" Class="fw-bold" Style="color: black;">Rate this Capstone Idea</MudText>
+                        <MudRating @bind-SelectedValue="Rating.RatingValue" Size="Size.Large" Class="mt-2 ms-5" />
+                        <MudContainer>
+                            <MudButton OnClick="SubmitRating" Variant="Variant.Outlined" Color="Color.Success" Class="mt-2 ms-4">
+                                Submit Rating
+                            </MudButton>
+                        </MudContainer>
                     </MudContainer>
 
                     <MudContainer Class="d-flex justify-content-end mt-5">
@@ -95,9 +95,8 @@ else
                             <MudIcon Icon="@Icons.Material.Filled.NavigateNext" />
                         </MudButton>
                     </MudContainer>
-                </MudPaper>
-            }
-
+                }
+            </MudPaper>
         </MudItem>
     </MudGrid>
 }

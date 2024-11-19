@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Projects\\CapstoneIdeaGenerator\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\pages\\ratingspage\\ratings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:pages\\ratingspage\\ratings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +27,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Ratings.razor",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\RatingsPage\\Ratings.razor",
+              "RelativeDocumentMoniker": "Pages\\RatingsPage\\Ratings.razor",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\RatingsPage\\Ratings.razor",
+              "RelativeToolTip": "Pages\\RatingsPage\\Ratings.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-19T05:42:14.164Z",
+              "EditorCaption": ""
             }
           ]
         }

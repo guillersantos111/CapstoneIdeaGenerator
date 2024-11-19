@@ -37,7 +37,6 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
                 await LocalStorage.SetItemAsync("isAdminLoggedIn", true);
 
                 CustomAuthStateProvider.MarkUserAsAuthenticated(token);
-                responseMessage = "Login Successfully";
                 NavigationManager.NavigateTo("/capstone");
             }
             else

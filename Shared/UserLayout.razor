@@ -1,19 +1,19 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
 
-<MudThemeProvider IsDarkMode="true" />
+<MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudPopoverProvider />
 
 <MudLayout>
     <MudContainer class="page">
-            <MudAppBar Style="background-color: rgb(134, 30, 255); z-index: 100" Elevation="5">
+        <MudAppBar Style="background-color: rgb(0, 151, 136); z-index: 100" Elevation="10">
                 <MudContainer Class="d-none d-lg-flex justify-content-start">
-                <MudButton Class="m-3" Style="height: 40px; width: 50px; color: azure" Href="/authentication">Login</MudButton>
-                <MudButton Class="m-3" Style="height: 40px; width: 50px; color: azure" Href="">About</MudButton>
-                <MudButton Class="m-3" Style="height: 40px; width: 100px; color: azure" Href="/generator">Generator</MudButton>
-                <MudButton Class="m-3" Style="height: 40px; width: 100px; color: azure" Href="/ratings">Ratings</MudButton>
+                <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: azure" Href="/authentication">Login</MudButton>
+                <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: azure" Href="/about">About</MudButton>
+                <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/generator">Generator</MudButton>
+                <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/ratings">Ratings</MudButton>
                 </MudContainer>
 
                 <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="@ToggleDrawer" Edge="Edge.End" Class="d-lg-none" />
@@ -29,12 +29,12 @@
         <MudDrawer Breakpoint="Breakpoint.Sm" Class="d-lg-none" @bind-Open="drawerOpen" Color="Color.Dark" ClipMode="DrawerClipMode.Never" Anchor="Anchor.Right" Elevation="3">
             <MudContainer Class="d-grid gap-5">
                 <MudContainer Class="d-grid row-cols-8 pt-5 ms-6">
-                    <MudButton Class="btn-appbar-menu mb-3" Style="height: 40px; width: 100px; color: azure" Href="/authentication">Login</MudButton>
-                    <MudButton Class="btn-appbar-menu mb-3" Style="height: 40px; width: 100px; color: azure" Href="">About</MudButton>
-                    <MudButton Class="btn-appbar-menu mb-3" Style="height: 40px; width: 100px; color: azure" Href="/generator">Generator</MudButton>
-                    <MudButton Class="m-3" Style="height: 40px; width: 100px; color: azure" Href="/ratings">Ratings</MudButton>
+                    <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/authentication">Login</MudButton>
+                    <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/about">About</MudButton>
+                    <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/generator">Generator</MudButton>
+                    <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/ratings">Ratings</MudButton>
                 </MudContainer>
-                <MudContainer Class="gap-5 ms-2">
+                <MudContainer Class="gap-5 ms-4">
                     <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.Facebook" Variant="Variant.Outlined" Link="https://www.facebook.com/guillersantos23" Target="_blank" />
                     <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.LinkedIn" Variant="Variant.Outlined" Target="_blank" />
                     <MudIconButton Class="me-2" Color="Color.Inherit" Icon="@Icons.Custom.Brands.GitHub" Variant="Variant.Outlined" Link="https://github.com/guillersantos111" Target="_blank" />

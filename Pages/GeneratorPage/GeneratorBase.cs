@@ -74,7 +74,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.GeneratorPage
 
                 if (generatedCapstone == null)
                 {
-                    Snackbar.Add("No idea found for the selected category and project type.", Severity.Warning);
+                    Snackbar.Add("No Capstone Found For The Selected Industry And Project Type", Severity.Warning);
                 }
                 else
                 {
@@ -83,7 +83,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.GeneratorPage
             }
             catch (Exception ex)
             {
-                Snackbar.Add($"Limited Project Type For this Industry: {ex.Message}", Severity.Info);
+                Snackbar.Add($"No {selectedProjectType} Project Type For this Industry", Severity.Info);
             }
             finally
             {

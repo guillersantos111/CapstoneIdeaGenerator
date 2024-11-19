@@ -4,25 +4,25 @@
 
 
 
-<MudThemeProvider IsDarkMode="true" />
+<MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudPopoverProvider />
 
 <MudLayout>
-    <MudAppBar Style="background-color: cornflowerblue; z-index: 100" Elevation="10">
+    <MudAppBar Style="background-color: royalblue; z-index: 100" Elevation="10">
         <MudContainer Class="d-none d-lg-flex justify-content-start">
             <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/capstone">Capstones</MudButton>
             <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/account">Account</MudButton>
-            <MudButton Class="m-3" Style="height: 40px; width: 100px; color: azure" Href="/adminratings">Ratings</MudButton>
+            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/adminratings">Ratings</MudButton>
         </MudContainer>
 
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="@ToggleDrawer" Edge="Edge.End" Class="d-md-none" />
 
         <MudContainer Class="d-none d-md-flex justify-content-end">
-            <MudIconButton Style="color: crimson; font-weight: 500" OnClick="Logout">
+            <MudIconButton Class="btn-appbar-menu" Style="color: crimson" OnClick="Logout">
                 Logout
-                <MudIcon Icon="@Icons.Material.Filled.Logout"></MudIcon>
+                <MudIcon Icon="@Icons.Material.Filled.Logout"/>
             </MudIconButton>
         </MudContainer>
     </MudAppBar>
@@ -30,9 +30,13 @@
     <MudDrawer Breakpoint="Breakpoint.None" Class="d-lg-none" @bind-Open="drawerOpen" Color="Color.Dark" ClipMode="DrawerClipMode.Never" Anchor="Anchor.Right" Elevation="3">
         <MudContainer Class="d-grid gap-5">
             <MudContainer Class="d-grid row-cols-8 pt-5 ms-6">
-                <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/capstone">Capstones</MudButton>
-                <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="">Account</MudButton>
-                <MudButton Class="m-3" Style="height: 40px; width: 100px; color: azure" Href="/adminratings">Ratings</MudButton>
+                <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/capstone">Capstones</MudButton>
+                <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="">Account</MudButton>
+                <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/adminratings">Ratings</MudButton>
+                <MudIconButton Class="btn-appbar-menu m-2" Style="color: crimson" OnClick="Logout">
+                    Logout
+                    <MudIcon Icon="@Icons.Material.Filled.Logout" />
+                </MudIconButton>
             </MudContainer>
         </MudContainer>
     </MudDrawer>
