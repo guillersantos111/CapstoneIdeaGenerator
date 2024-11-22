@@ -9,43 +9,46 @@
 else
 {
     <MudGrid Justify="Justify.Center">
-
-        <MudContainer Class="text-center m-4 pt-20">
-            <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h3">
-                Admin Login
-            </MudText>
-        </MudContainer>
-
-        <MudPaper Class="d-flex justify-center align-center" Elevation="5" Style="width: 500px; height: 600px; margin-top: 30px;">
-            <MudContainer MaxWidth="MaxWidth.Small">
-                <MudCard Elevation="10">
-                    <MudCardContent>
-                        <MudText Style="font-weight: bolder; margin: 4px;" Typo="Typo.h5">Login</MudText>
-
-                        <MudTextField Class="mb-5" T="string" Label="Username" @bind-Value="login.Email" Variant="Variant.Outlined" FullWidth />
-                        <MudTextField Class="mb-10" T="string" Label="Password" @bind-Value="login.Password" Variant="Variant.Outlined" InputType="InputType.Password" FullWidth />
-
-                        @if (!string.IsNullOrEmpty(responseMessage))
-                        {
-                            <MudText Color="Color.Error">@responseMessage</MudText>
-                        }
-
-                        <MudButton FullWidth Style="height: 50px; background-color: rgb(63, 81, 182); color: white;" OnClick="LoginOnClick" Variant="Variant.Filled" Disabled="isLoading">
-                            @if (isLoading)
-                            {
-                                <MudProgressCircular Indeterminate="true" Size="Size.Medium" />
-                            }
-                            else
-                            {
-                                @:Login
-                            }
-                        </MudButton>
-                        <MudContainer Class="mt-5 fw-bold">
-                            <MudLink  OnClick="OpenForgotPasswordDialog">Forgot Password?</MudLink>
-                        </MudContainer>
-                    </MudCardContent>
-                </MudCard>
+        <MudContainer>
+            <MudContainer Class="text-center m-4 pt-20">
+                <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h3">
+                    Admin Login
+                </MudText>
             </MudContainer>
-        </MudPaper>
+
+            <MudContainer Class="d-flex justify-content-center">
+                <MudPaper Elevation="5" Style="width: 500px; height: 600px; margin-top: 30px;">
+                    <MudContainer>
+                        <MudCard Class="mt-20 pt-20" Elevation="10">
+                            <MudCardContent>
+                                <MudText Style="font-weight: bolder; margin: 4px;" Typo="Typo.h5">Login</MudText>
+
+                                <MudTextField Class="mb-5" T="string" Label="Username" @bind-Value="login.Email" Variant="Variant.Outlined" FullWidth />
+                                <MudTextField Class="mb-10" T="string" Label="Password" @bind-Value="login.Password" Variant="Variant.Outlined" InputType="InputType.Password" FullWidth />
+
+                                @if (!string.IsNullOrEmpty(responseMessage))
+                                {
+                                    <MudText Color="Color.Error">@responseMessage</MudText>
+                                }
+
+                                <MudButton FullWidth Style="height: 50px; background-color: rgb(63, 81, 182); color: white;" OnClick="LoginOnClick" Variant="Variant.Filled" Disabled="isLoading">
+                                    @if (isLoading)
+                                    {
+                                        <MudProgressCircular Indeterminate="true" Size="Size.Medium" />
+                                    }
+                                    else
+                                    {
+                                        @:Login
+                                    }
+                                </MudButton>
+                                <MudContainer Class="mt-5 fw-bold">
+                                    <MudLink OnClick="OpenForgotPasswordDialog">Forgot Password?</MudLink>
+                                </MudContainer>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudContainer>
+                </MudPaper>
+            </MudContainer>
+        </MudContainer>
     </MudGrid>
 }

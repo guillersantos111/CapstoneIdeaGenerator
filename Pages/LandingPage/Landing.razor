@@ -1,0 +1,157 @@
+﻿@page "/landing"
+@layout AboutLayout
+
+
+<MudGrid Justify="Justify.Center">
+    <MudContainer Class="mt-20 pt-20">
+        <MudPaper Style="width: 500px; height: 500px;">
+            <MudContainer>
+                <MudText>Under Development</MudText>
+            </MudContainer>
+        </MudPaper>
+    </MudContainer>
+</MudGrid>
+
+
+<MudGrid Justify="Justify.Center" Style="padding-top: 100px;">
+    <MudGrid>
+        <MudItem xs="12" sm="2">
+            <MudSwitch Label="Reverse" @bind-Value="reverse" Disabled="IsSwitchDisabled()" Color="Color.Primary" />
+        </MudItem>
+        <MudItem xs="12" sm="5">
+            <MudSelect T="TimelineOrientation" ValueChanged="OnOrientationChange" Label="TimelineOrientation" Dense="true" Variant="Variant.Outlined">
+                <MudSelectItem T="TimelineOrientation" Value="TimelineOrientation.Vertical">Vertical</MudSelectItem>
+                <MudSelectItem T="TimelineOrientation" Value="TimelineOrientation.Horizontal">Horizontal</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12" sm="5">
+            <MudSelect T="TimelinePosition" @bind-Value="position" Label="TimelinePosition" Dense="true" Variant="Variant.Outlined">
+                @if (orientation == TimelineOrientation.Vertical)
+                {
+                    <MudSelectItem T="TimelinePosition" Value="TimelinePosition.Start">Start</MudSelectItem>
+                    <MudSelectItem T="TimelinePosition" Value="TimelinePosition.Left">Left</MudSelectItem>
+                    <MudSelectItem T="TimelinePosition" Value="TimelinePosition.Alternate">Alternate</MudSelectItem>
+                    <MudSelectItem T="TimelinePosition" Value="TimelinePosition.Right">Right</MudSelectItem>
+                    <MudSelectItem T="TimelinePosition" Value="TimelinePosition.End">End</MudSelectItem>
+                }
+                else if (orientation == TimelineOrientation.Horizontal)
+                {
+                    <MudSelectItem T="TimelinePosition" Value="TimelinePosition.Top">Top</MudSelectItem>
+                    <MudSelectItem T="TimelinePosition" Value="TimelinePosition.Alternate">Alternate</MudSelectItem>
+                    <MudSelectItem T="TimelinePosition" Value="TimelinePosition.Bottom">Bottom</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+    </MudGrid>
+
+    <MudItem>
+        <MudTimeline Reverse="reverse" TimelineOrientation="orientation" TimelinePosition="position">
+            <MudTimelineItem Color="Color.Info" Variant="Variant.Filled">
+                <ItemContent>
+                    <MudAlert Class="text-center" Severity="Severity.Info">
+                        Admin Login Page
+                    </MudAlert>
+                </ItemContent>
+                <ItemOpposite>
+                    <MudButton Color="Color.Info" Class="btn-appbar-menu" Href="/authentication">Login</MudButton>
+                </ItemOpposite>
+            </MudTimelineItem>
+
+            <MudTimelineItem Color="Color.Success" Variant="Variant.Filled">
+                <ItemContent>
+                    <MudAlert Class="text-center" Severity="Severity.Success">
+                        See more about this Capstone Shared Idea Web Application
+                    </MudAlert>
+                </ItemContent>
+                <ItemOpposite>
+                    <MudButton Color="Color.Success" Class="btn-appbar-menu">About</MudButton>
+                </ItemOpposite>
+            </MudTimelineItem>
+
+            <MudTimelineItem Color="Color.Warning" Variant="Variant.Filled">
+                <ItemContent>
+                    <MudAlert Class="text-center" Severity="Severity.Warning">
+                        Explore and Discover more new Capstone Ideas with Capstone Shared Idea Web Application
+                    </MudAlert>
+                </ItemContent>
+                <ItemOpposite>
+                    <MudButton Color="Color.Warning" Class="btn-appbar-menu" Href="/generator">Generator</MudButton>
+                </ItemOpposite>
+            </MudTimelineItem>
+
+            <MudTimelineItem Color="Color.Error" Variant="Variant.Filled">
+                <ItemContent>
+                    <MudAlert Class="text-center" Severity="Severity.Error">
+                        Check the best Capstone Ideas
+                    </MudAlert>
+                </ItemContent>
+                <ItemOpposite>
+                    <MudButton Color="Color.Error" Class="btn-appbar-menu" Href="/ratings">Ratings</MudButton>
+                </ItemOpposite>
+            </MudTimelineItem>
+        </MudTimeline>
+    </MudItem>
+
+    <MudContainer Style="position: sticky; bottom: 0; left: 0; margin-top: 300px;">
+        <MudContainer Class="d-flex gap-6 mb-6">
+            <MudText Class="fs-6 fw-bolder">
+                <MudImage Src="icons8-bootstrap-48.png" Style="height: 25px; width: 25px;" />
+                Bootstrap
+            </MudText>
+            <MudText Class="fs-6 fw-bolder" Style="color: limegreen">C#</MudText>
+            <MudText Class="fs-6 fw-bolder">
+                <MudIcon Icon="@Icons.Custom.Brands.MudBlazor" Color="Color.Primary" />MudBlazor
+            </MudText>
+            <MudText Class="fs-6 fw-bolder">
+                <MudIcon Icon="@Icons.Custom.Brands.Microsoft" Color="Color.Success" />.NET
+            </MudText>
+        </MudContainer>
+        <MudContainer>
+            <MudText>
+                Developed By: <MudText Class="fs-6 fw-bolder">Guiller Santos</MudText>
+            </MudText>
+        </MudContainer>
+    </MudContainer>
+
+</MudGrid>
+
+
+
+
+
+
+
+
+
+
+@code {
+    private TimelinePosition position { get; set; } = TimelinePosition.Alternate;
+    private TimelineOrientation orientation { get; set; } = TimelineOrientation.Horizontal;
+    private bool reverse { get; set; }
+    private bool isLoading = false;
+
+    private void OnOrientationChange(TimelineOrientation value)
+    {
+        orientation = value;
+        switch (value)
+        {
+            case TimelineOrientation.Vertical:
+                if (position is TimelinePosition.Top or TimelinePosition.Bottom)
+                    position = TimelinePosition.Start;
+                break;
+            case TimelineOrientation.Horizontal:
+                if (position is TimelinePosition.Start or TimelinePosition.Left or TimelinePosition.Right or TimelinePosition.End)
+                    position = TimelinePosition.Top;
+                break;
+        }
+    }
+
+    private bool IsSwitchDisabled()
+    {
+        if (position == TimelinePosition.Alternate)
+            return false;
+        else
+            reverse = false;
+        return true;
+    }
+}
