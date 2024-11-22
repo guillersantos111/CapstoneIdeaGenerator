@@ -81,7 +81,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.GeneratorPage
                     isIdeaGenerated = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Snackbar.Add($"No {selectedProjectType} Project Type For this Industry", Severity.Info);
             }

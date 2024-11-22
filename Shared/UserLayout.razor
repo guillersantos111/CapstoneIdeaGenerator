@@ -7,8 +7,8 @@
 <MudPopoverProvider />
 
 <MudLayout>
-    <MudContainer class="page">
-        <MudAppBar Style="background-color: rgb(0, 151, 136); z-index: 100" Elevation="10">
+    <MudContainer>
+        <MudAppBar Style="background-color: rgb(63, 81, 182); z-index: 100" Elevation="10">
                 <MudContainer Class="d-none d-lg-flex justify-content-start">
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: azure" Href="/authentication">Login</MudButton>
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: azure" Href="/about">About</MudButton>
@@ -26,7 +26,7 @@
             </MudAppBar>
         
 
-        <MudDrawer Breakpoint="Breakpoint.Sm" Class="d-lg-none" @bind-Open="drawerOpen" Color="Color.Dark" ClipMode="DrawerClipMode.Never" Anchor="Anchor.Right" Elevation="3">
+        <MudDrawer Breakpoint="Breakpoint.None" Class="d-lg-none" @bind-Open="drawerOpen" Color="Color.Dark" ClipMode="DrawerClipMode.Never" Anchor="Anchor.Right" Elevation="3">
             <MudContainer Class="d-grid gap-5">
                 <MudContainer Class="d-grid row-cols-8 pt-5 ms-6">
                     <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/authentication">Login</MudButton>
@@ -41,14 +41,15 @@
                 </MudContainer>
             </MudContainer>
         </MudDrawer>
-
-        <MudContainer>
-            <MudContainer Class="content px-4">
-                @Body
-            </MudContainer>
+    </MudContainer>
+    <MudContainer>
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mb-16 pb-16 mt-10" Style="background-image: url(MainImage.png); max-widh: 100%; height:100%;">
+            @Body
         </MudContainer>
     </MudContainer>
 </MudLayout>
+
+
 
 @code {
     private bool drawerOpen = false;

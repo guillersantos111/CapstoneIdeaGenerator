@@ -19,8 +19,8 @@ namespace CapstoneIdeaGenerator.Client.Shared
 
         public async Task ToggleDrawer()
         {
-            drawerOpen = !drawerOpen;
             await LocalStorage.SetItemAsync("drawerState", drawerOpen);
+            drawerOpen = !drawerOpen;
         }
         public async Task Logout()
         {
