@@ -1,0 +1,53 @@
+﻿@page "/capstone"
+@layout AdminLayout
+@using MudBlazor.Services
+@using CapstoneIdeaGenerator.Client.Components
+@inherits CapstoneBase
+
+@if (isLoading)
+{
+    <Loader/>
+}
+else
+{
+    <MudGrid>
+        <MudContainer Class="mt-20 pt-10">
+            <MudPaper>
+                <MudIconButton Icon="@Icons.Material.Filled.Add" Color="Color.Success" OnClick="() => AddCapstone()">
+                    <MudText Class="fs-5 fw-bold" Color="Color.Primary">
+                        Add New Capstone
+                    </MudText>
+                </MudIconButton>
+                <MudTable Items="Capstones" Striped="true" Hover="true" Height="750px" FixedHeader="true" Class="table-responsive-sm">
+                    <HeaderContent>
+                        <MudTh>Titles</MudTh>
+                        <MudTh>Descriptions</MudTh>
+                        <MudTh>Created By</MudTh>
+                        <MudTh>Programming Languages</MudTh>
+                        <MudTh>Databases</MudTh>
+                        <MudTh>Frameworks</MudTh>
+                        <MudTh>Actions</MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd>@context.Title</MudTd>
+                        <MudTd>@context.Description</MudTd>
+                        <MudTd>@context.CreatedBy</MudTd>
+                        <MudTh>@context.ProgLanguages</MudTh>
+                        <MudTh>@context.Databases</MudTh>
+                        <MudTh>@context.Frameworks</MudTh>
+
+                        <MudTd>
+                            <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" OnClick="() => UpdateCapstone(context)" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="() => RemoveCapstone(context.CapstoneId)" />
+                        </MudTd>
+                    </RowTemplate>
+                    <NoRecordsContent>
+                        <MudContainer>
+                            <MudText Typo="Typo.body2" Align="Align.Center">No capstone projects found.</MudText>
+                        </MudContainer>
+                    </NoRecordsContent>
+                </MudTable>
+            </MudPaper>
+        </MudContainer>
+    </MudGrid>
+}

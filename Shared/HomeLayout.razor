@@ -1,0 +1,38 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+
+<MudLayout>
+    <MudContainer>
+        <MudAppBar Style="background-color: transparent; z-index: 100; height: 60px" Elevation="10">
+            <MudContainer Class="d-none d-lg-flex justify-content-start">
+                <MudText Style="font-size: 15px; font-weight: bold; color: white"><MudImage Style="height: 35px; width: 35px; " Src="C.png"></MudImage>apstone Shared Idea Generator</MudText>
+            </MudContainer>
+
+
+            <MudContainer Class="d-none d-lg-flex justify-content-end">
+                <MudButton Class="btn-appbar-menu fs-6 fw-bolder" Style="color: dodgerblue" Href="/authentication">Login <MudIcon Icon="@Icons.Material.Filled.Login"></MudIcon></MudButton>
+            </MudContainer>
+        </MudAppBar>
+    </MudContainer>
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Style="background-image: url(VividBg.jpg);
+                                                        background-repeat: no-repeat;
+                                                        background-position: center;
+                                                        background-size: cover;
+                                                        height: 103vh">
+        @Body
+
+        <MudContainer>
+            <footer style="background-color: dodgerblue">
+            </footer>
+        </MudContainer>
+    </MudContainer>
+</MudLayout>
+
+@code {
+
+}

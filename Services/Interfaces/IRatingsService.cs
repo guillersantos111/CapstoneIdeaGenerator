@@ -1,5 +1,4 @@
 ﻿using CapstoneIdeaGenerator.Client.Models.DTO;
-using CapstoneIdeaGenerator.Client.Pages.RatingsPage;
 
 namespace CapstoneIdeaGenerator.Client.Services.Interfaces
 {

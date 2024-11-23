@@ -1,5 +1,4 @@
 ﻿using CapstoneIdeaGenerator.Client.Models.DTO;
-using CapstoneIdeaGenerator.Client.Pages.RatingsPage;
 using CapstoneIdeaGenerator.Client.Services.Interfaces;
 using System.Net.Http;
 using System.Net.Http.Json;

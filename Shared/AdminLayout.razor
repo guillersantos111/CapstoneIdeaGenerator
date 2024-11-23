@@ -10,11 +10,13 @@
 <MudPopoverProvider />
 
 <MudLayout>
-    <MudAppBar Style="background-color: royalblue; z-index: 100" Elevation="10">
+    <MudAppBar Style="background-color: transparent; z-index: 100" Elevation="10">
         <MudContainer Class="d-none d-lg-flex justify-content-start">
-            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/capstone">Capstones</MudButton>
-            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/account">Account</MudButton>
-            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: azure" Href="/adminratings">Ratings</MudButton>
+            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/dashboard">Dashboard</MudButton>
+            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/capstone">Capstones</MudButton>
+            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/account">Account</MudButton>
+            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/adminratings">Ratings</MudButton>
+            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/activitylogs">Activity Logs</MudButton>
         </MudContainer>
 
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="@ToggleDrawer" Edge="Edge.End" Class="d-md-none" />
@@ -30,10 +32,11 @@
     <MudDrawer Breakpoint="Breakpoint.Xs" Class="d-lg-none" @bind-Open="drawerOpen" Color="Color.Dark" ClipMode="DrawerClipMode.Never" Anchor="Anchor.Right" Elevation="3">
         <MudContainer Class="d-grid gap-5">
             <MudContainer Class="d-grid row-cols-8 pt-5 ms-6">
-                <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/capstone">Capstones</MudButton>
-                <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="">Account</MudButton>
-                <MudButton Class="btn-appbar-menu m-2" Style="color: azure" Href="/adminratings">Ratings</MudButton>
-                <MudIconButton Class="btn-appbar-menu m-2" Style="color: crimson" OnClick="Logout">
+                <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/capstone">Capstones</MudButton>
+                <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="">Account</MudButton>
+                <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/adminratings">Ratings</MudButton>
+                <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/activitylogs">Activity Logs</MudButton>
+                <MudIconButton Class="btn-appbar-menu m-2" Style="color: orangered;" OnClick="Logout">
                     Logout
                     <MudIcon Icon="@Icons.Material.Filled.Logout" />
                 </MudIconButton>
@@ -41,7 +44,11 @@
         </MudContainer>
     </MudDrawer>
 
-    <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mb-16 pb-16 mt-10" Style="background-image: url(MainImage.png); max-widh: 100%; height:100%;">
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Style="background-image: url(VividBg.jpg);
+                                                        background-repeat: no-repeat;
+                                                        background-position: center;
+                                                        background-size: cover;
+                                                        height: 103vh">
         @Body
     </MudContainer>
 
