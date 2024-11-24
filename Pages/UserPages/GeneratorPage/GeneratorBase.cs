@@ -3,6 +3,7 @@ using CapstoneIdeaGenerator.Client.Models.DTO;
 using CapstoneIdeaGenerator.Client.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CapstoneIdeaGenerator.Client.Pages.UserPages.GeneratorPage
 {
@@ -12,7 +13,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.UserPages.GeneratorPage
         [Inject] private IDialogService DialogService { get; set; }
         [Inject] private IRatingsService ratingsService { get; set; }
         [Inject] private ISnackbar Snackbar { get; set; }
-        [Inject] private CustomAuthStateProvider CustomAuthStateProvider { get; set; }
+        [Inject] private CustomAuthStateProvider customAuthStateProvider { get; set; }
         public RatingRequestDTO Rating { get; set; } = new RatingRequestDTO();
 
         private readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, NoHeader = true };
@@ -33,7 +34,6 @@ namespace CapstoneIdeaGenerator.Client.Pages.UserPages.GeneratorPage
                 isLoading = true;
                 categories = await generatorService.GetAllCategories();
                 projectTypes = await generatorService.GetAllProjectTypes();
-
             }
             catch (Exception ex)
             {
@@ -44,7 +44,6 @@ namespace CapstoneIdeaGenerator.Client.Pages.UserPages.GeneratorPage
                 isLoading = false;
             }
         }
-
 
         public async Task GenerateIdea()
         {
@@ -111,9 +110,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.UserPages.GeneratorPage
         {
             if (string.IsNullOrEmpty(Rating.UserId))
             {
-                if (CustomAuthStateProvider != null)
+                if (customAuthStateProvider != null)
                 {
-                    Rating.UserId = CustomAuthStateProvider.GenerateRandomUserId(8);
+                    Rating.UserId = customAuthStateProvider.GenerateRandomUserId(8);
                 }
                 else
                 {
@@ -154,6 +153,5 @@ namespace CapstoneIdeaGenerator.Client.Pages.UserPages.GeneratorPage
                 Snackbar.Add($"Error Submitting Rating: {ex.Message}", Severity.Error);
             }
         }
-
     }
 }

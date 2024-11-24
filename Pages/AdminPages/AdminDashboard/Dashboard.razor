@@ -1,18 +1,24 @@
 ﻿@page "/dashboard"
+@inherits DashboardBase
 @layout AdminLayout
 
 
-<MudGrid Justify="Justify.Center">
+<MudGrid>
     <MudContainer Class="mt-20 pt-20">
-        <MudPaper>
-            <MudText>UnderDevelopment</MudText>
-        </MudPaper>
+        <MudText Class="fs-4 fw-bolder" Style="color: white">Activity Logs</MudText>
+        <MudTable Height="650px" Items="@activityLogs" Hover="true">
+            <HeaderContent>
+                <MudTh>Admin Name</MudTh>
+                <MudTh>Action</MudTh>
+                <MudTh>Timestamp</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>@context.Name</MudTd>
+                <MudTd>@context.Actions</MudTd>
+                <MudTd>@context.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</MudTd>
+            </RowTemplate>
+        </MudTable>
     </MudContainer>
 </MudGrid>
 
 
-
-
-@code {
-
-}

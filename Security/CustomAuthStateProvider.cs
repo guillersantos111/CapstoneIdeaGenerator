@@ -32,7 +32,6 @@ namespace CapstoneIdeaGenerator.Client
 
             var user = new ClaimsPrincipal(identity);
 
-            // Set Authorization header for HttpClient if token exists
             if (!string.IsNullOrEmpty(token))
             {
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -70,6 +69,7 @@ namespace CapstoneIdeaGenerator.Client
             base64 = base64.PadRight(base64.Length + (4 - base64.Length % 4) % 4, '=');
             return Convert.FromBase64String(base64);
         }
+
         public void MarkUserAsAuthenticated(string token)
         {
             if (token.Contains("."))
@@ -82,12 +82,11 @@ namespace CapstoneIdeaGenerator.Client
             {
                 var authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity(new[]
                 {
-            new Claim(ClaimTypes.Name, "admin")
-        }, "non-jwt"));
+                new Claim(ClaimTypes.Name, "admin")
+            }, "non-jwt"));
                 NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(authenticatedUser)));
             }
         }
-
 
         public void MarkUserAsLoggedOut()
         {
@@ -102,8 +101,26 @@ namespace CapstoneIdeaGenerator.Client
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var random = new Random();
             return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)])
-                .ToArray());
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
+        public async Task<int?> GetLoggedInAdminId()
+        {
+            var authState = await GetAuthenticationStateAsync();
+            var identity = (ClaimsIdentity)authState.User.Identity;
+
+            if (identity != null)
+            {
+                var adminIdClaim = identity.FindFirst("AdminId");
+
+                if (adminIdClaim != null && int.TryParse(adminIdClaim.Value, out var adminId))
+                {
+                    return adminId;
+                }
+            }
+
+            return null;
+        }
+
     }
 }

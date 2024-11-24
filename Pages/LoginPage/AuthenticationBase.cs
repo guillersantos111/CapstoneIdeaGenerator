@@ -14,14 +14,18 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public ILocalStorageService LocalStorage { get; set; }
         [Inject] public ISnackbar Snackbar { get; set; }
+        [Inject] public IActivityLogsService ActivityLogsService { get; set; }
         [Inject] public IDialogService DialogService { get; set; }
         [Inject] public CustomAuthStateProvider CustomAuthStateProvider { get; set; }
 
         public ForgotPasswordDialogBase forgotPasswordBase;
         public LoginRequestDTO login = new LoginRequestDTO();
+        public ActivityLogsDTO logsDTO = new ActivityLogsDTO();
         public string responseMessage = string.Empty;
         public bool isSuccess;
         public bool isLoading = false;
+
+
 
         public async Task LoginOnClick()
         {
@@ -29,24 +33,28 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
 
             var token = await AuthService.LoginAsync(login);
 
-            if (!string.IsNullOrEmpty(token))
-            {
-                Console.WriteLine($"Token Recieve: {token}");
+                if (!string.IsNullOrEmpty(token))
+                {
+                    Console.WriteLine($"Token Recieve: {token}");
 
-                await LocalStorage.SetItemAsync("authToken", token);
-                await LocalStorage.SetItemAsync("isAdminLoggedIn", true);
+                    await LocalStorage.SetItemAsync("authToken", token);
+                    await LocalStorage.SetItemAsync("isAdminLoggedIn", true);
 
-                CustomAuthStateProvider.MarkUserAsAuthenticated(token);
-                NavigationManager.NavigateTo("/dashboard");
-            }
-            else
-            {
-                responseMessage = "Invalid username or password.";
-                isSuccess = false;
-            }
+                    await ActivityLogsService.LogActivity(logsDTO.AdminId, login.Email, "Logged In");
+
+                    CustomAuthStateProvider.MarkUserAsAuthenticated(token);
+                    NavigationManager.NavigateTo("/dashboard");
+                }
+                else
+                {
+                    responseMessage = "Invalid username or password.";
+                    isSuccess = false;
+                }
 
             isLoading = false;
         }
+
+
 
         public async Task OpenForgotPasswordDialog()
         {

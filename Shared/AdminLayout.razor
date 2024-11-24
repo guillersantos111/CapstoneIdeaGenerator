@@ -10,13 +10,12 @@
 <MudPopoverProvider />
 
 <MudLayout>
-    <MudAppBar Style="background-color: transparent; z-index: 100" Elevation="10">
+    <MudAppBar Style="background-color: transparent; z-index: 100">
         <MudContainer Class="d-none d-lg-flex justify-content-start">
             <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/dashboard">Dashboard</MudButton>
             <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/capstone">Capstones</MudButton>
             <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/account">Account</MudButton>
             <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/adminratings">Ratings</MudButton>
-            <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/activitylogs">Activity Logs</MudButton>
         </MudContainer>
 
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="@ToggleDrawer" Edge="Edge.End" Class="d-md-none" />
@@ -35,7 +34,6 @@
                 <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/capstone">Capstones</MudButton>
                 <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="">Account</MudButton>
                 <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/adminratings">Ratings</MudButton>
-                <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/activitylogs">Activity Logs</MudButton>
                 <MudIconButton Class="btn-appbar-menu m-2" Style="color: orangered;" OnClick="Logout">
                     Logout
                     <MudIcon Icon="@Icons.Material.Filled.Logout" />
