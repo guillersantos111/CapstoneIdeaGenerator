@@ -20,6 +20,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
 
         public ForgotPasswordDialogBase forgotPasswordBase;
         public LoginRequestDTO login = new LoginRequestDTO();
+        public AdminDTO admin = new AdminDTO();
         public ActivityLogsDTO logsDTO = new ActivityLogsDTO();
         public string responseMessage = string.Empty;
         public bool isSuccess;
@@ -37,12 +38,13 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
                 {
                     Console.WriteLine($"Token Recieve: {token}");
 
-                    await LocalStorage.SetItemAsync("authToken", token);
-                    await LocalStorage.SetItemAsync("isAdminLoggedIn", true);
+                await ActivityLogsService.LogActivity
+                    (
+                        admin.AdminId,
+                        admin.Name,
+                        "Logged In"
+                    );
 
-                    await ActivityLogsService.LogActivity(logsDTO.AdminId, login.Email, "Logged In");
-
-                    CustomAuthStateProvider.MarkUserAsAuthenticated(token);
                     NavigationManager.NavigateTo("/dashboard");
                 }
                 else

@@ -24,9 +24,6 @@ namespace CapstoneIdeaGenerator.Client.Shared
         }
         public async Task Logout()
         {
-            customAuthStateProvider.MarkUserAsLoggedOut();
-            await LocalStorage.RemoveItemAsync("authToken");
-            await LocalStorage.RemoveItemAsync("authTokenExpiration");
 
             NavigationManager.NavigateTo("/authentication");
         }
