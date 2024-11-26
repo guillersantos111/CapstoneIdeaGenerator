@@ -1,62 +1,55 @@
 ﻿using Blazored.LocalStorage;
-using Microsoft.AspNetCore.Components;
-using CapstoneIdeaGenerator.Client.Services.Interfaces;
 using CapstoneIdeaGenerator.Client.Components;
-using MudBlazor;
 using CapstoneIdeaGenerator.Client.Models.DTO;
+using CapstoneIdeaGenerator.Client.Services.Interfaces;
+using Microsoft.AspNetCore.Components;
+using MudBlazor;
+using System.Net.Http.Json;
 
 namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
 {
     public class AuthenticationBase : ComponentBase
     {
         private readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Large, FullWidth = true, NoHeader = true };
+
+        [Inject] public HttpClient httpClient { get; set; }
         [Inject] public IAuthenticationService AuthService { get; set; }
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public ILocalStorageService LocalStorage { get; set; }
         [Inject] public ISnackbar Snackbar { get; set; }
-        [Inject] public IActivityLogsService ActivityLogsService { get; set; }
         [Inject] public IDialogService DialogService { get; set; }
         [Inject] public CustomAuthStateProvider CustomAuthStateProvider { get; set; }
+        [Inject] public AuthenticationStateProvider AuthenticationStateProvider { get; set; }
 
         public ForgotPasswordDialogBase forgotPasswordBase;
         public LoginRequestDTO login = new LoginRequestDTO();
         public AdminDTO admin = new AdminDTO();
-        public ActivityLogsDTO logsDTO = new ActivityLogsDTO();
         public string responseMessage = string.Empty;
         public bool isSuccess;
         public bool isLoading = false;
-
-
 
         public async Task LoginOnClick()
         {
             isLoading = true;
 
-            var token = await AuthService.LoginAsync(login);
+            var result = await httpClient.PostAsJsonAsync("/api/Authentication/login", login);
+            var token = await result.Content.ReadAsStringAsync();
+            Console.WriteLine(token);
 
-                if (!string.IsNullOrEmpty(token))
-                {
-                    Console.WriteLine($"Token Recieve: {token}");
-
-                await ActivityLogsService.LogActivity
-                    (
-                        admin.AdminId,
-                        admin.Name,
-                        "Logged In"
-                    );
-
-                    NavigationManager.NavigateTo("/dashboard");
-                }
-                else
-                {
-                    responseMessage = "Invalid username or password.";
-                    isSuccess = false;
-                }
-
-            isLoading = false;
+            if (result.IsSuccessStatusCode)
+            {
+                isLoading = false;
+                await LocalStorage.SetItemAsync("token", token);
+                await AuthenticationStateProvider.GetAuthenticationStateAsync();
+                NavigationManager.NavigateTo("/dashboard");
+            }
+            else
+            {
+                isLoading = false;
+                responseMessage = "Login failed. Please check your credentials and try again.";
+                Snackbar.Add(responseMessage, Severity.Error);
+            }
         }
-
-
 
         public async Task OpenForgotPasswordDialog()
         {
@@ -76,6 +69,5 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
                 Snackbar.Add("Operation canceled.", Severity.Warning, options => options.VisibleStateDuration = 3000);
             }
         }
-
     }
 }

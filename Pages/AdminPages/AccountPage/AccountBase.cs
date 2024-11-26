@@ -14,6 +14,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
         [Inject] ISnackbar Snackbar { get; set; }
 
         public static AdminDTO admin = new AdminDTO();
+        public static AdminRegisterDTO register = new AdminRegisterDTO();
         public string message = string.Empty;
         public bool isLoading = false;
         public MudForm form;
@@ -50,7 +51,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
         public async Task RegisterOnClick()
         {
             isLoading = true;
-            var response = await authenticationService.RegisterAsync(admin);
+            var response = await authenticationService.RegisterAsync(register);
             if (response.IsSuccess)
             {
                 isLoading = false;

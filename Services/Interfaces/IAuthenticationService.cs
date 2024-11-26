@@ -4,8 +4,8 @@ namespace CapstoneIdeaGenerator.Client.Services.Interfaces
 {
     public interface IAuthenticationService
     {
-        Task<string> LoginAsync(LoginRequestDTO request);
-        Task<Response> RegisterAsync(AdminDTO admin);
+        Task<Response> LoginAsync(LoginRequestDTO request);
+        Task<Response> RegisterAsync(AdminRegisterDTO register);
         Task<string> ForgotPasswordAsync(string email);
         Task<bool> ResetPasswordAsync(PasswordResetRequestDTO request);
         Task<IEnumerable<AdminDTO>> GetAllAccounts();

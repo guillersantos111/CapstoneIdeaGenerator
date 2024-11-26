@@ -1,6 +1,8 @@
 ﻿@page "/account"
 @layout AdminLayout
 @inherits AccountBase
+@attribute [Authorize]
+
 
 <MudGrid Justify="Justify.Center">
     <MudText Class="mt-20 pt-10 fw-bolder" Style="color: white" Typo="Typo.h3">Manage Account</MudText>
@@ -13,19 +15,19 @@
 
             <MudContainer Class="px-4 mt-4">
                 <MudForm @ref="form" Validated="OnValidated">
-                    <MudTextField T="string" Label="Name" @bind-Value="admin.Name" Required="true" />
+                    <MudTextField T="string" Label="Name" @bind-Value="register.Name" Required="true" />
 
-                    <MudSelect T="string" Label="Gender" @bind-Value="admin.Gender" Required="true">
+                    <MudSelect T="string" Label="Gender" @bind-Value="register.Gender" Required="true">
                         <MudSelectItem Value="@("Male")">Male</MudSelectItem>
                         <MudSelectItem Value="@("Female")">Female</MudSelectItem>
                         <MudSelectItem Value="@("Other")">Other</MudSelectItem>
                     </MudSelect>
 
-                    <MudTextField T="string" Label="Age" @bind-Value="admin.Age" Pattern="^\d*$" MaxLength="3" Required="true" />
+                    <MudTextField T="int" Label="Age" @bind-Value="register.Age" MaxLength="3" Required="true" />
 
-                    <MudTextField T="string" Label="Email" @bind-Value="admin.Email" Required="true" />
+                    <MudTextField T="string" Label="Email" @bind-Value="register.Email" Required="true" />
 
-                    <MudTextField T="string" Label="Password" @bind-Value="admin.Password" InputType="InputType.Password" Required="true" />
+                    <MudTextField T="string" Label="Password" @bind-Value="register.Password" InputType="InputType.Password" Required="true" />
 
                     <MudButton Class="mt-15" Style="height: 50px; background-color: dodgerblue; color:white" Variant="Variant.Filled" Disabled="@isLoading" OnClick="RegisterOnClick" >
                         Register
@@ -42,14 +44,14 @@
                         <MudTh>Gender</MudTh>
                         <MudTh>Age</MudTh>
                         <MudTh>Email</MudTh>
-                        <MudTh>Password</MudTh>
+                        <MudTh>Date Joined</MudTh>
                     </HeaderContent>
                     <RowTemplate>
                         <MudTd DataLabel="Name">@context.Name</MudTd>
                         <MudTd DataLabel="Gender">@context.Gender</MudTd>
                         <MudTd DataLabel="Age">@context.Age</MudTd>
                         <MudTd DataLabel="Email">@context.Email</MudTd>
-                        <MudTd DataLabel="Password">@context.Password</MudTd>
+                        <MudTd DataLabel="=Date Joined">@context.DateJoined</MudTd>
                         <MudTd>
                             <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="() => RemoveAccount(context.AdminId)" />
                         </MudTd>

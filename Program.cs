@@ -15,9 +15,10 @@ builder.Services.AddScoped<ICapstoneService, CapstoneService>();
 builder.Services.AddScoped<IGeneratorService, GeneratorService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IRatingsService, RatingsService>();
-builder.Services.AddScoped<IActivityLogsService, ActivityLogsService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+builder.Services.AddScoped<CustomAuthStateProvider>();
 builder.Services.AddAuthorizationCore();
+builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7269") });
 
@@ -31,8 +32,5 @@ builder.Services.AddOidcAuthentication(options =>
 builder.Services.AddMudServices();
 builder.Services.AddOptions();
 
-
-builder.Services.AddAuthorizationCore();
-builder.Services.AddBlazoredLocalStorage();
 
 await builder.Build().RunAsync();

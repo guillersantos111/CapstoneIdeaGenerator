@@ -1,6 +1,7 @@
 ﻿@page "/authentication"
 @inject NavigationManager Navigation
 @inherits AuthenticationBase
+@inject CustomAuthStateProvider CustomAuthStateProvider
 
 
 @if (isLoading)
@@ -10,7 +11,7 @@
 else
 {
     <MudLayout>
-        <MudContainer >
+        <MudContainer>
             <MudContainer Class="d-flex justify-content-between" Style="margin-right: 100%">
                 <MudContainer Class="d-flex justify-content-center mt-10 pt-20">
                     <MudPaper Elevation="5" Style="width: 500px; height: 600px; margin-top: 30px;">
@@ -20,40 +21,31 @@ else
                                     <MudText Style="font-weight: bolder; margin: 4px;" Typo="Typo.h5">Login</MudText>
 
                                     <MudTextField Class="mb-5" T="string" Label="Username" @bind-Value="login.Email" Variant="Variant.Outlined" FullWidth />
-                                    <MudTextField Class="mb-10" T="string" Label="Password" @bind-Value="login.Password" Variant="Variant.Outlined" InputType="InputType.Password" FullWidth />
+                                    <MudTextField Class="mb-5" T="string" Label="Password" @bind-Value="login.Password" Variant="Variant.Outlined" InputType="InputType.Password" FullWidth />
 
                                     @if (!string.IsNullOrEmpty(responseMessage))
                                     {
-                                        <MudText Color="Color.Error">@responseMessage</MudText>
+                                        <MudAlert Severity="Severity.Error" Dense="true">@responseMessage</MudAlert>
                                     }
 
-                                    <MudButton FullWidth Style="height: 50px; background-color: dodgerblue; color: white;" OnClick="LoginOnClick" Variant="Variant.Filled" Disabled="isLoading">
-                                        @if (isLoading)
-                                        {
-                                            <MudProgressCircular Indeterminate="true" Size="Size.Medium" />
-                                        }
-                                        else
-                                        {
-                                            @:Login
-                                        }
-                                    </MudButton>
-                                    <MudContainer Class="mt-5 fw-bold">
-                                        <MudLink OnClick="OpenForgotPasswordDialog">Forgot Password?</MudLink>
-                                    </MudContainer>
+                                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" FullWidth OnClick="LoginOnClick">Login</MudButton>
                                 </MudCardContent>
+                                <MudCardActions Class="d-flex justify-content-between">
+                                    <MudLink Href="#" @onclick="OpenForgotPasswordDialog">Forgot Password?</MudLink>
+                                </MudCardActions>
                             </MudCard>
                         </MudContainer>
                     </MudPaper>
                 </MudContainer>
+            </MudContainer>
 
-                <MudContainer Class="d-grid justify-content-center mt-20 pt-20">
-                    <MudContainer>
-                        <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h4">
-                            Capstone Shared Ideas Generator Admin Login
-                        </MudText>
-                    </MudContainer>
-                    <MudImage Src="Login.png" Style="width: 550px; height: 550px; background-color: transparent;"></MudImage>
+            <MudContainer Class="d-grid justify-content-center mt-20 pt-20">
+                <MudContainer>
+                    <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h4">
+                        Capstone Shared Ideas Generator Admin Login
+                    </MudText>
                 </MudContainer>
+                <MudImage Src="Login.png" Style="width: 550px; height: 550px; background-color: transparent;"></MudImage>
             </MudContainer>
         </MudContainer>
     </MudLayout>

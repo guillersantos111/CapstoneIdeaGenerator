@@ -14,38 +14,70 @@ namespace CapstoneIdeaGenerator.Client.Services
             _httpClient = httpClient;
         }
 
-        public async Task<string> LoginAsync(LoginRequestDTO request)
+        public async Task<Response> LoginAsync(LoginRequestDTO request)
         {
             var response = await _httpClient.PostAsJsonAsync("/api/Authentication/login", request);
-            if (response.IsSuccessStatusCode)
-            {
-                return await response.Content.ReadAsStringAsync();
-            }
-
-            return null;
-        }
-
-
-        public async Task<Response> RegisterAsync(AdminDTO admin)
-        {
-            var response = await _httpClient.PostAsJsonAsync("/api/Authentication/register", admin);
 
             if (response.IsSuccessStatusCode)
             {
-                var message = await response.Content.ReadAsStringAsync();
+                var token = await response.Content.ReadAsStringAsync();
+
+                if (string.IsNullOrEmpty(token))
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Token is null or empty"
+                    };
+                }
+
                 return new Response
                 {
                     IsSuccess = true,
-                    Message = message
+                    Message = token 
                 };
             }
-            else
+
+            return new Response
             {
-                var errorMessage = await response.Content.ReadAsStringAsync();
+                IsSuccess = false,
+                Message = "Invalid Credentials"
+            };
+        }
+
+
+        public async Task<Response> RegisterAsync(AdminRegisterDTO register)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("/api/Authentication/register", register);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    return new Response
+                    {
+                        IsSuccess = true,
+                        Message = message
+                    };
+                }
+                else
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Registration failed: " + errorMessage
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+               
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = errorMessage
+                    Message = "An error occurred during registration: " + ex.Message
                 };
             }
         }
@@ -58,7 +90,7 @@ namespace CapstoneIdeaGenerator.Client.Services
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<Response>();
-                return result?.Token; // Return the token directly
+                return result?.Token;
             }
 
             var error = await response.Content.ReadAsStringAsync();
