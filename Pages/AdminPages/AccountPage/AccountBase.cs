@@ -8,17 +8,17 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
 {
     public class AccountBase : ComponentBase
     {
-        public ICollection<AccountDTO> Admins { get; set; } = new List<AccountDTO>();
-
         [Inject] IAuthenticationService authenticationService { get; set; }
         [Inject] IDialogService DialogService { get; set; }
         [Inject] ISnackbar Snackbar { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
 
-        public List<AccountDTO> accounts = new List<AccountDTO>();
+        public ICollection<AccountDTO> Admins { get; set; } = new List<AccountDTO>();
         public static AdminRegisterDTO register = new AdminRegisterDTO();
+        public List<AccountDTO> accounts = new List<AccountDTO>();
+        public MudForm form;
         public string message = string.Empty;
         public bool isLoading = false;
-        public MudForm form;
 
         protected override async Task OnInitializedAsync()
         {
@@ -41,9 +41,10 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
                     Admins = response.ToList();
                 }
             }
-            catch (HttpRequestException httpEx)
+            catch (HttpRequestException ex)
             {
-                Snackbar.Add($"HTTPS Request Error: {httpEx}", Severity.Error);
+                Snackbar.Add($"HTTPS Request Error: {ex.Message}");
+                NavigationManager.NavigateTo("/home");
             }
 
             StateHasChanged();
@@ -69,10 +70,10 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
 
        // public async Task RemoveAccount(int id)
        // {
-          //  bool? confirm = await DialogService.ShowMessageBox("Delete Confirmation", "Are you sure you want to delete this Account?", yesText: "Delete", cancelText: "Cancel");
+          // bool? confirm = await DialogService.ShowMessageBox("Delete Confirmation", "Are you sure you want to delete this Account?", yesText: "Delete", cancelText: "Cancel");
 
            // if (confirm == true)
-           //{
+           // {
            //    await authenticationService.RemoveAccount(id);
            //    Snackbar.Add("Account Remove Successfully", Severity.Success);
            //    await LoadAccounts();

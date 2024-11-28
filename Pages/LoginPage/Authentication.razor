@@ -10,9 +10,9 @@
 }
 else
 {
-    <MudGrid>
+    <MudLayout>
         <MudContainer>
-            <MudContainer Class="d-flex justify-content-between" Style="margin-right: 100%">
+            <MudContainer Class="d-flex" Style="margin-right: 100%">
                 <MudContainer Class="d-flex justify-content-center mt-10 pt-20">
                     <MudPaper Elevation="5" Style="width: 500px; height: 600px; margin-top: 30px;">
                         <MudContainer>
@@ -28,22 +28,20 @@ else
                                         <MudAlert Severity="Severity.Error" Dense="true">@responseMessage</MudAlert>
                                     }
 
-                                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" FullWidth OnClick="LoginOnClick">Login</MudButton>
+                                    <MudButton Style="height: 50px" Variant="Variant.Filled" Color="Color.Info" Class="mt-4" FullWidth OnClick="LoginOnClick">Login</MudButton>
                                 </MudCardContent>
                             </MudCard>
                         </MudContainer>
                     </MudPaper>
                 </MudContainer>
-            </MudContainer>
 
-            <MudContainer Class="d-grid justify-content-center mt-20 pt-20">
-                <MudContainer>
-                    <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h4">
-                        Capstone Shared Ideas Generator Admin Login
-                    </MudText>
+                <MudContainer Class="mt-20 pt-20">
+                        <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h4">
+                            Capstone Shared Ideas Generator Admin Login
+                        </MudText>
+                    <MudImage Src="Login.png" Style="width: 550px; height: 550px; background-color: transparent;"></MudImage>
                 </MudContainer>
-                <MudImage Src="Login.png" Style="width: 550px; height: 550px; background-color: transparent;"></MudImage>
             </MudContainer>
         </MudContainer>
-    </MudGrid>
+    </MudLayout>
 }

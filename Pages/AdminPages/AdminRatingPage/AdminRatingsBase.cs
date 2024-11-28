@@ -1,5 +1,6 @@
 ﻿using CapstoneIdeaGenerator.Client.Models.DTO;
 using CapstoneIdeaGenerator.Client.Services.Interfaces;
+using CapstoneIdeaGenerator.Client.Shared;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
@@ -10,7 +11,8 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
         public List<RatingsDTO>? Ratings;
         public bool isLoading = false;
         [Inject] IRatingsService RatingsService { get; set; }
-        [Inject] private ISnackbar Snackbar { get; set; }
+        [Inject] ISnackbar Snackbar { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -38,6 +40,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
             catch (HttpRequestException ex)
             {
                 Snackbar.Add($"HTTPS Request Error: {ex.Message}");
+                NavigationManager.NavigateTo("/home");
             }
 
             StateHasChanged();

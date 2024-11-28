@@ -11,9 +11,10 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
         public ICollection<CapstonesDTO> Capstones { get; private set; } = new List<CapstonesDTO>();
         private readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, NoHeader = true };
 
-        [Inject] private ICapstoneService CapstoneService { get; set; }
-        [Inject] private IDialogService DialogService { get; set; }
-        [Inject] private ISnackbar Snackbar { get; set; }
+        [Inject] ICapstoneService CapstoneService { get; set; }
+        [Inject] IDialogService DialogService { get; set; }
+        [Inject] ISnackbar Snackbar { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
         public bool isLoading { get; set; } = false;
 
         protected override async Task OnInitializedAsync()
@@ -40,9 +41,10 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
                     isLoading = false;
                 }
             }
-            catch (HttpRequestException httpEx)
+            catch (HttpRequestException ex)
             {
-                Snackbar.Add($"HTTPS Request Error: {httpEx.Message}", Severity.Error);
+                Snackbar.Add($"HTTPS Request Error: {ex.Message}");
+                NavigationManager.NavigateTo("/home");
             }
 
             StateHasChanged();
