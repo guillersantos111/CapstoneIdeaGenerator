@@ -1,5 +1,6 @@
 ﻿@page "/editcapstonedialog"
 @inherits EditCapstoneDialogBase
+@attribute [Authorize(Roles = "Admin")]
 
 
 <MudDialog DisableSidePadding = "false">

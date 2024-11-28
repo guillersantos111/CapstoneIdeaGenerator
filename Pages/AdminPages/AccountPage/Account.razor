@@ -1,7 +1,7 @@
 ﻿@page "/account"
 @layout AdminLayout
 @inherits AccountBase
-@attribute [Authorize]
+@attribute [Authorize(Roles = "Admin")]
 
 
 <MudGrid Justify="Justify.Center">
@@ -16,18 +16,15 @@
             <MudContainer Class="px-4 mt-4">
                 <MudForm @ref="form" Validated="OnValidated">
                     <MudTextField T="string" Label="Name" @bind-Value="register.Name" Required="true" />
-
                     <MudSelect T="string" Label="Gender" @bind-Value="register.Gender" Required="true">
                         <MudSelectItem Value="@("Male")">Male</MudSelectItem>
                         <MudSelectItem Value="@("Female")">Female</MudSelectItem>
                         <MudSelectItem Value="@("Other")">Other</MudSelectItem>
                     </MudSelect>
-
                     <MudTextField T="int" Label="Age" @bind-Value="register.Age" MaxLength="3" Required="true" />
-
                     <MudTextField T="string" Label="Email" @bind-Value="register.Email" Required="true" />
-
                     <MudTextField T="string" Label="Password" @bind-Value="register.Password" InputType="InputType.Password" Required="true" />
+                    <MudTextField T="string" Label="Confirm Password" @bind-Value="register.ConfirmPassword" InputType="InputType.Password" Required="true" />
 
                     <MudButton Class="mt-15" Style="height: 50px; background-color: dodgerblue; color:white" Variant="Variant.Filled" Disabled="@isLoading" OnClick="RegisterOnClick" >
                         Register
@@ -41,20 +38,17 @@
                 <MudTable Items="Admins" Striped="true" Hover="true" Bordered="true" Class="mt-4">
                     <HeaderContent>
                         <MudTh>Name</MudTh>
+                        <MudTh>Email</MudTh>
                         <MudTh>Gender</MudTh>
                         <MudTh>Age</MudTh>
-                        <MudTh>Email</MudTh>
                         <MudTh>Date Joined</MudTh>
                     </HeaderContent>
                     <RowTemplate>
-                        <MudTd DataLabel="Name">@context.Name</MudTd>
-                        <MudTd DataLabel="Gender">@context.Gender</MudTd>
-                        <MudTd DataLabel="Age">@context.Age</MudTd>
-                        <MudTd DataLabel="Email">@context.Email</MudTd>
-                        <MudTd DataLabel="=Date Joined">@context.DateJoined</MudTd>
-                        <MudTd>
-                            <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="() => RemoveAccount(context.AdminId)" />
-                        </MudTd>
+                        <MudTd>@context.Name</MudTd>
+                        <MudTd>@context.Email</MudTd>
+                        <MudTd>@context.Gender</MudTd>
+                        <MudTd>@context.Age</MudTd>
+                        <MudTd>@context.DateJoined.ToString("yyyy-MM-dd")</MudTd>
                     </RowTemplate>
                 </MudTable>
             </MudContainer>

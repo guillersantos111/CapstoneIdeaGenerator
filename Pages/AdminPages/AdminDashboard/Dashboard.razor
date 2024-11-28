@@ -1,15 +1,13 @@
 ﻿@page "/dashboard"
 @inherits DashboardBase
 @layout AdminLayout
-@attribute [Authorize]
-
+@attribute [Authorize(Roles = "Admin")]
 
 <AuthorizeView>
     <MudGrid>
-        <MudContainer Class="mt-20 pt-20">
-            <MudText Class="fs-4 fw-bolder" Style="color: white">You Are Authorize</MudText>
-        </MudContainer>
+        <MudText>Authorized</MudText>
     </MudGrid>
 </AuthorizeView>
+
 
 

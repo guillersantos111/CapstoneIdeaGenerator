@@ -8,7 +8,7 @@ namespace CapstoneIdeaGenerator.Client.Components
 {
     public class EditLoginBase : ComponentBase
     {
-        public LoginRequestDTO login = new LoginRequestDTO();
+        public AdminLoginDTO login = new AdminLoginDTO();
         public string errorMessage;
         public bool isLoading = false;
 

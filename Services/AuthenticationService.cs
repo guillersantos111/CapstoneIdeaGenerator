@@ -2,117 +2,59 @@
 using Blazored.LocalStorage;
 using System.Net.Http.Json;
 using CapstoneIdeaGenerator.Client.Models.DTO;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Text;
+using Microsoft.Win32;
+using System.Net.Http;
 
 namespace CapstoneIdeaGenerator.Client.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
         private readonly HttpClient _httpClient;
+        private readonly ILocalStorageService _localStorage;
+        private readonly AuthenticationStateProvider _authenticationStateProvider;
 
-        public AuthenticationService(HttpClient httpClient)
+        public AuthenticationService(HttpClient httpClient, ILocalStorageService localStorage, AuthenticationStateProvider authenticationStateProvider)
         {
             _httpClient = httpClient;
+            _localStorage = localStorage;
+            _authenticationStateProvider = authenticationStateProvider;
         }
 
-        public async Task<Response> LoginAsync(LoginRequestDTO request)
+        public async Task<Response> LoginAsync(AdminLoginDTO request)
         {
-            var response = await _httpClient.PostAsJsonAsync("/api/Authentication/login", request);
+            var result = await _httpClient.PostAsJsonAsync("/api/Authentication/login", request);
+            var token = await result.Content.ReadAsStringAsync();
 
-            if (response.IsSuccessStatusCode)
+            if (result.IsSuccessStatusCode)
             {
-                var token = await response.Content.ReadAsStringAsync();
-
-                if (string.IsNullOrEmpty(token))
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = "Token is null or empty"
-                    };
-                }
-
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = token 
-                };
+                await _localStorage.SetItemAsync("token", token);
+                await _authenticationStateProvider.GetAuthenticationStateAsync();
+                return new Response { IsSuccess = true, Message = "Login successful" };
             }
-
-            return new Response
+            else
             {
-                IsSuccess = false,
-                Message = "Invalid Credentials"
-            };
-        }
-
-
-        public async Task<Response> RegisterAsync(AdminRegisterDTO register)
-        {
-            try
-            {
-                var response = await _httpClient.PostAsJsonAsync("/api/Authentication/register", register);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var message = await response.Content.ReadAsStringAsync();
-                    return new Response
-                    {
-                        IsSuccess = true,
-                        Message = message
-                    };
-                }
-                else
-                {
-                    var errorMessage = await response.Content.ReadAsStringAsync();
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = "Registration failed: " + errorMessage
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-               
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = "An error occurred during registration: " + ex.Message
-                };
+                return new Response { IsSuccess = false, Message = "Login failed. Please check your credentials." };
             }
         }
 
 
-        public async Task<string> ForgotPasswordAsync(string email)
+        public async Task<bool> RegisterAsync(AdminRegisterDTO request)
         {
-            var response = await _httpClient.PostAsJsonAsync("/api/Authentication/forgot-password", email);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var result = await response.Content.ReadFromJsonAsync<Response>();
-                return result?.Token;
-            }
-
-            var error = await response.Content.ReadAsStringAsync();
-            return $"Error: {error}";
-        }
-
-
-        public async Task<bool> ResetPasswordAsync(PasswordResetRequestDTO request)
-        {
-            var response = await _httpClient.PostAsJsonAsync("/api/Authentication/reset-password", request);
+            var response = await _httpClient.PostAsJsonAsync("/api/Authentication/register", request);
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<AdminDTO>> GetAllAccounts()
+        public async Task<string> GetAdminNameAsync()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<AdminDTO>>("/api/Authentication/accounts") ?? new List<AdminDTO>();
+            return await _httpClient.GetFromJsonAsync<string>("/api/Authentication");
         }
 
-        public async Task RemoveAccount(int id)
+        public async Task<IEnumerable<AccountDTO>> GetAllAccountsAsync()
         {
-            var response = await _httpClient.DeleteAsync($"/api/Authentication/{id}");
-            response.EnsureSuccessStatusCode();
+            return await _httpClient.GetFromJsonAsync<IEnumerable<AccountDTO>>("/api/Authentication/accounts");
         }
     }
 }

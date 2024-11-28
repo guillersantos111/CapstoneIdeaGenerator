@@ -2,7 +2,7 @@
 
 namespace CapstoneIdeaGenerator.Client.Models.DTO
 {
-    public class AdminDTO
+    public class AccountDTO
     {
         public int AdminId { get; set; }
 
@@ -15,9 +15,9 @@ namespace CapstoneIdeaGenerator.Client.Models.DTO
         [JsonRequired]
         public int Age { get; set; }
 
-        public DateTime DateJoined { get; set; }
-
         [JsonRequired]
         public string Email { get; set; } = string.Empty;
+
+        public DateTime DateJoined { get; set; }
     }
 }

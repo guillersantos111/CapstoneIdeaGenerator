@@ -10,7 +10,7 @@
 }
 else
 {
-    <MudLayout>
+    <MudGrid>
         <MudContainer>
             <MudContainer Class="d-flex justify-content-between" Style="margin-right: 100%">
                 <MudContainer Class="d-flex justify-content-center mt-10 pt-20">
@@ -30,9 +30,6 @@ else
 
                                     <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" FullWidth OnClick="LoginOnClick">Login</MudButton>
                                 </MudCardContent>
-                                <MudCardActions Class="d-flex justify-content-between">
-                                    <MudLink Href="#" @onclick="OpenForgotPasswordDialog">Forgot Password?</MudLink>
-                                </MudCardActions>
                             </MudCard>
                         </MudContainer>
                     </MudPaper>
@@ -48,5 +45,5 @@ else
                 <MudImage Src="Login.png" Style="width: 550px; height: 550px; background-color: transparent;"></MudImage>
             </MudContainer>
         </MudContainer>
-    </MudLayout>
+    </MudGrid>
 }

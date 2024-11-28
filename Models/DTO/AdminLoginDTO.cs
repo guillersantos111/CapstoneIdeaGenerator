@@ -2,7 +2,7 @@
 
 namespace CapstoneIdeaGenerator.Client.Models.DTO
 {
-    public class LoginRequestDTO
+    public class AdminLoginDTO
     {
         [JsonRequired]
         public string Email { get; set; }

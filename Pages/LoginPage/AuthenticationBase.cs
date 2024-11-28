@@ -21,9 +21,8 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
         [Inject] public CustomAuthStateProvider CustomAuthStateProvider { get; set; }
         [Inject] public AuthenticationStateProvider AuthenticationStateProvider { get; set; }
 
-        public ForgotPasswordDialogBase forgotPasswordBase;
-        public LoginRequestDTO login = new LoginRequestDTO();
-        public AdminDTO admin = new AdminDTO();
+        public AdminLoginDTO login = new AdminLoginDTO();
+        public AccountDTO admin = new AccountDTO();
         public string responseMessage = string.Empty;
         public bool isSuccess;
         public bool isLoading = false;
@@ -31,42 +30,18 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
         public async Task LoginOnClick()
         {
             isLoading = true;
+            var response = await AuthService.LoginAsync(login);
 
-            var result = await httpClient.PostAsJsonAsync("/api/Authentication/login", login);
-            var token = await result.Content.ReadAsStringAsync();
-            Console.WriteLine(token);
-
-            if (result.IsSuccessStatusCode)
+            if (response.IsSuccess)
             {
                 isLoading = false;
-                await LocalStorage.SetItemAsync("token", token);
-                await AuthenticationStateProvider.GetAuthenticationStateAsync();
                 NavigationManager.NavigateTo("/dashboard");
             }
             else
             {
                 isLoading = false;
-                responseMessage = "Login failed. Please check your credentials and try again.";
+                responseMessage = response.Message;
                 Snackbar.Add(responseMessage, Severity.Error);
-            }
-        }
-
-        public async Task OpenForgotPasswordDialog()
-        {
-            var parameter = new DialogParameters<ForgotPasswordDialog>();
-            var dialogOptions = new DialogOptions { CloseButton = true, FullWidth = true };
-
-            var dialog = DialogService.Show<ForgotPasswordDialog>("Forgot Password", parameter, dialogOptions);
-
-            var result = await dialog.Result;
-
-            if (!result.Canceled)
-            {
-                Snackbar.Add("Reset Token Has Been Sent To Your Email", Severity.Success, options => options.VisibleStateDuration = 4000);
-            }
-            else
-            {
-                Snackbar.Add("Operation canceled.", Severity.Warning, options => options.VisibleStateDuration = 3000);
             }
         }
     }

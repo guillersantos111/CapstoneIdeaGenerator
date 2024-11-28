@@ -11,13 +11,11 @@ namespace CapstoneIdeaGenerator.Client
     {
         private readonly ILocalStorageService localStorageService;
         private readonly HttpClient httpClient;
-        private readonly IAuthenticationService authenticationService;
 
-        public CustomAuthStateProvider(ILocalStorageService localStorageService, HttpClient httpClient, IAuthenticationService authenticationService)
+        public CustomAuthStateProvider(ILocalStorageService localStorageService, HttpClient httpClient)
         {
             this.localStorageService = localStorageService;
             this.httpClient = httpClient;
-            this.authenticationService = authenticationService;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -29,9 +27,16 @@ namespace CapstoneIdeaGenerator.Client
 
             if (!string.IsNullOrEmpty(token))
             {
-                identity = new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt");
-                httpClient.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", token.Replace("\"", ""));
+                try
+                {
+                    identity = new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt");
+                    httpClient.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", token.Replace("\"", ""));
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine($"Error parsing token: {ex.Message}");
+                }
             }
 
             var user = new ClaimsPrincipal(identity);
