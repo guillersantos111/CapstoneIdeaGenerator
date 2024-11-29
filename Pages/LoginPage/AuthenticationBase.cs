@@ -4,7 +4,6 @@ using CapstoneIdeaGenerator.Client.Models.DTO;
 using CapstoneIdeaGenerator.Client.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using System.Net.Http.Json;
 
 namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
 {
@@ -42,6 +41,21 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
                 isLoading = false;
                 responseMessage = response.Message;
                 Snackbar.Add(responseMessage, Severity.Error);
+            }
+        }
+
+
+        public async Task OpenForgotPasswordDialog()
+        {
+            var parameters = new DialogParameters<FotgotPasswordDialog>();
+
+            var dialog = DialogService.Show<FotgotPasswordDialog>("Forgot Password", parameters, dialogOptions);
+
+            var result = await dialog.Result;
+
+            if (!result.Canceled)
+            {
+                Snackbar.Add("Reset Token Successfully Sent", Severity.Info);
             }
         }
     }

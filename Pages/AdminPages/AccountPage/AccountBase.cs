@@ -41,9 +41,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
                     Admins = response.ToList();
                 }
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                Snackbar.Add($"HTTPS Request Error: {ex.Message}");
+                Snackbar.Add($"Exception Error: {ex.Message}");
                 NavigationManager.NavigateTo("/home");
             }
 

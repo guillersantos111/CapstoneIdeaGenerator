@@ -37,9 +37,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
                     isLoading = false;
                 }
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                Snackbar.Add($"HTTPS Request Error: {ex.Message}");
+                Snackbar.Add($"Exception Error: {ex.Message}");
                 NavigationManager.NavigateTo("/home");
             }
 

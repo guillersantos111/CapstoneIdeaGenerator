@@ -29,7 +29,6 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
                 isLoading = true;
                 var response = await CapstoneService.GetAllCapstones();
                 Capstones = response?.ToList() ?? new List<CapstonesDTO>();
-                isLoading = true;
 
                 if (response == null)
                 {
@@ -41,9 +40,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
                     isLoading = false;
                 }
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                Snackbar.Add($"HTTPS Request Error: {ex.Message}");
+                Snackbar.Add($"Exception Error: {ex.Message}");
                 NavigationManager.NavigateTo("/home");
             }
 

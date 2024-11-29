@@ -23,22 +23,31 @@ namespace CapstoneIdeaGenerator.Client.Services
             _authenticationStateProvider = authenticationStateProvider;
         }
 
+
         public async Task<Response> LoginAsync(AdminLoginDTO request)
         {
-            var result = await _httpClient.PostAsJsonAsync("/api/Authentication/login", request);
-            var token = await result.Content.ReadAsStringAsync();
+            try
+            {
+                var result = await _httpClient.PostAsJsonAsync("/api/Authentication/login", request);
+                var token = await result.Content.ReadAsStringAsync();
 
-            if (result.IsSuccessStatusCode)
-            {
-                await _localStorage.SetItemAsync("token", token);
-                await _authenticationStateProvider.GetAuthenticationStateAsync();
-                return new Response { IsSuccess = true, Message = "Login successful" };
+                if (result.IsSuccessStatusCode)
+                {
+                    await _localStorage.SetItemAsync("token", token);
+                    await _authenticationStateProvider.GetAuthenticationStateAsync();
+                    return new Response { IsSuccess = true, Message = "Login successful" };
+                }
+                else
+                {
+                    return new Response { IsSuccess = false, Message = "Login failed. Please check your credentials." };
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return new Response { IsSuccess = false, Message = "Login failed. Please check your credentials." };
+                return new Response { IsSuccess = false, Message = "An error occurred: " + ex.Message };
             }
         }
+
 
 
         public async Task<bool> RegisterAsync(AdminRegisterDTO request)
@@ -47,10 +56,52 @@ namespace CapstoneIdeaGenerator.Client.Services
             return response.IsSuccessStatusCode;
         }
 
+
+        public async Task<string> ForgotPassword(AdminForgotPasswordDTO request)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("/api/Authentication/forgot-password", request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+
+                throw new Exception("Failed To Send Forgot Password Request");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An Error Occurred: " + ex.Message);
+            }
+        }
+
+
+        public async Task<string> ResetPassword(AdminPasswordResetDTO request)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync("/api/Authentication/reset-password", request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+
+                throw new Exception("Failed To Send Password Reset Request");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An Error Occurred: " + ex.Message);
+            }
+        }
+
+
         public async Task<string> GetAdminNameAsync()
         {
             return await _httpClient.GetFromJsonAsync<string>("/api/Authentication");
         }
+
 
         public async Task<IEnumerable<AccountDTO>> GetAllAccountsAsync()
         {
