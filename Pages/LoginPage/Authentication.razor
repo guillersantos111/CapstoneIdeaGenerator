@@ -28,8 +28,8 @@ else
                                         <MudAlert Severity="Severity.Error" Dense="true">@responseMessage</MudAlert>
                                     }
 
-                                    <MudButton Style="height: 50px" Variant="Variant.Filled" Color="Color.Info" Class="mt-4" FullWidth OnClick="LoginOnClick">Login</MudButton>
-                                    <MudLink></MudLink>
+                                    <MudButton Class="mt-4 mb-5" Style="height: 50px" Variant="Variant.Filled" Color="Color.Info" FullWidth OnClick="LoginOnClick">Login</MudButton>
+                                    <MudLink OnClick="() => OpenForgotPasswordDialog()">Forgot Password?</MudLink>
                                 </MudCardContent>
                             </MudCard>
                         </MudContainer>

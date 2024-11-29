@@ -6,7 +6,7 @@ namespace CapstoneIdeaGenerator.Client.Services.Interfaces
     {
         Task<Response> LoginAsync(AdminLoginDTO request);
         Task<bool> RegisterAsync(AdminRegisterDTO request);
-        Task<string> ForgotPassword(AdminForgotPasswordDTO request);
+        Task<Response> ForgotPassword(AdminForgotPasswordDTO request);
         Task<string> ResetPassword(AdminPasswordResetDTO request);
         Task<string> GetAdminNameAsync();
         Task<IEnumerable<AccountDTO>> GetAllAccountsAsync();

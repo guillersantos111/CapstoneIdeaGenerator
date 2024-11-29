@@ -3,7 +3,7 @@
 @attribute [Authorize(Roles = "Admin")]
 
 
-<MudDialog DisableSidePadding = "false">
+<MudDialog>
     <DialogContent>
         <EditForm Model="capstones" OnValidSubmit="Save">
             <MudText Style="color: white; margin: 10px" Typo="Typo.h5">@((capstones.CapstoneId == 0) ? "Add New Capstone" : "Edit Capstone")</MudText>

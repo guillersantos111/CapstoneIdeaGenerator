@@ -57,7 +57,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         }
 
 
-        public async Task<string> ForgotPassword(AdminForgotPasswordDTO request)
+        public async Task<Response> ForgotPassword(AdminForgotPasswordDTO request)
         {
             try
             {
@@ -65,7 +65,8 @@ namespace CapstoneIdeaGenerator.Client.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return await response.Content.ReadAsStringAsync();
+                    var result = await response.Content.ReadFromJsonAsync<Response>();
+                    return result;
                 }
 
                 throw new Exception("Failed To Send Forgot Password Request");

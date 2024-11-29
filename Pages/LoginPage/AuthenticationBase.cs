@@ -28,19 +28,18 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
 
         public async Task LoginOnClick()
         {
-            isLoading = true;
+            
             var response = await AuthService.LoginAsync(login);
 
             if (response.IsSuccess)
             {
-                isLoading = false;
+                isLoading = true;
                 NavigationManager.NavigateTo("/dashboard");
             }
             else
             {
                 isLoading = false;
                 responseMessage = response.Message;
-                Snackbar.Add(responseMessage, Severity.Error);
             }
         }
 
@@ -53,9 +52,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
 
             var result = await dialog.Result;
 
-            if (!result.Canceled)
+            if (!result.Canceled && result.Data is string resetToken)
             {
-                Snackbar.Add("Reset Token Successfully Sent", Severity.Info);
+                Snackbar.Add($"Reset Token Successfully Sent: {resetToken}", Severity.Info);
             }
         }
     }

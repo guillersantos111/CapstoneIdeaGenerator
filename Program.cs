@@ -15,6 +15,7 @@ builder.Services.AddScoped<ICapstoneService, CapstoneService>();
 builder.Services.AddScoped<IGeneratorService, GeneratorService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IRatingsService, RatingsService>();
+builder.Services.AddScoped<IClipboardService, ClipboardService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 builder.Services.AddScoped<CustomAuthStateProvider>();
 builder.Services.AddAuthorizationCore();
