@@ -20,7 +20,7 @@ namespace CapstoneIdeaGenerator.Client
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            string token = await localStorageService.GetItemAsStringAsync("token");
+            string token = await localStorageService.GetItemAsync<string>("Token");
 
             var identity = new ClaimsIdentity();
             httpClient.DefaultRequestHeaders.Authorization = null;

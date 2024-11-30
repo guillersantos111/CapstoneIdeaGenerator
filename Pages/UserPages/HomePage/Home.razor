@@ -1,103 +1,47 @@
 ﻿@page "/home"
-@layout HomeLayout
+@layout UserLayout
 
 
 
-<MudGrid>
-    <MudGrid Justify="Justify.Center">
-        <MudContainer Class="mt-20 pt-20">
-            <MudContainer>
-                <MudText Class="position-absolute top-25 start-0 ms-15 mt-5" Style="font-size: 45px; font-weight: bolder; color: white;">Welcome To The Capstone <br /> Shared Idea Generator!</MudText>
+<MudLayout>
+    <MudContainer>
+        <MudContainer Class="position-absolute start-0 top-0 mt-20 pt-20 ms-5" Style="color: white;">
+            <MudText Typo="Typo.h2" Class="fw-bolder">
+                WELCOME <br />
+                TO CAPSTONE <br />
+                SHARED IDEAS GENERATOR
+            </MudText>
+            <MudText Class="fs-2 mt-5">
+                Generate innovative capstone concepts instantly.
+            </MudText>
+            <MudContainer Class="">
+                <MudButton Class="btn-generate" Href="/generator">
+                    GENERATE HERE!
+                    <div class="moving-icon-container m-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animated-icon">
+                            <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path>
+                            <path d="m14 7 3 3"></path>
+                            <path d="M5 6v4"></path>
+                            <path d="M19 14v4"></path>
+                            <path d="M10 2v2"></path>
+                            <path d="M7 8H3"></path>
+                            <path d="M21 16h-4"></path>
+                            <path d="M11 3H9"></path>
+                        </svg>
+                    </div>
+                </MudButton>
             </MudContainer>
         </MudContainer>
-    </MudGrid>
-
-    <MudImage Class="position-absolute top-0 end-0 mt-15 pt-20" Style="width: 600px; height: 650px; background-color: transparent;" Src="Device.gif"></MudImage>
+    </MudContainer>
 
     <MudContainer>
-        <MudItem xs="12" sm="2">
-            <MudSwitch Class="position-absolute top-0 end-0 mt-20 pt-20" Style="color: white;" Label="Reverse" @bind-Value="reverse" Disabled="IsSwitchDisabled()" Color="Color.Primary" />
-        </MudItem>
+        <MudImage Class="position-absolute top-0 end-0 mt-15 pt-15 me-5" Style="width: 450px; height: 750px; background-color: transparent;" Src="Sample.png"></MudImage>
     </MudContainer>
-
-    <MudGrid  Style="padding-top: 460px;">
-        <MudItem Style="width: 900px; margin-left: 200px">
-            <MudTimeline Reverse="reverse" TimelineOrientation="orientation" TimelinePosition="position">
-                <MudTimelineItem Color="Color.Success" Variant="Variant.Filled">
-                    <ItemContent>
-                        <MudAlert Class="text-center" Severity="Severity.Success">
-                            See more about Capstone Shared Idea Generator
-                        </MudAlert>
-                    </ItemContent>
-                    <ItemOpposite>
-                        <MudButton Color="Color.Success" Class="btn-appbar-menu" Href="/about">About</MudButton>
-                    </ItemOpposite>
-                </MudTimelineItem>
-
-                <MudTimelineItem Color="Color.Warning" Variant="Variant.Filled">
-                    <ItemContent>
-                        <MudAlert Class="text-center" Severity="Severity.Warning">
-                            Explore and Discover more new Capstone Ideas with Capstone Shared Idea Generator
-                        </MudAlert>
-                    </ItemContent>
-                    <ItemOpposite>
-                        <MudButton Color="Color.Warning" Class="btn-appbar-menu" Href="/generator">Generator</MudButton>
-                    </ItemOpposite>
-                </MudTimelineItem>
-
-                <MudTimelineItem Color="Color.Error" Variant="Variant.Filled">
-                    <ItemContent>
-                        <MudAlert Class="text-center" Severity="Severity.Error">
-                            Check the best Capstone Ideas
-                        </MudAlert>
-                    </ItemContent>
-                    <ItemOpposite>
-                        <MudButton Color="Color.Error" Class="btn-appbar-menu" Href="/ratings">Ratings</MudButton>
-                    </ItemOpposite>
-                </MudTimelineItem>
-            </MudTimeline>
-        </MudItem>
-    </MudGrid>
-
-    <MudContainer Style="position: absolute; bottom: 0;">
-        <MudContainer Class="d-flex gap-6 mb-3">
-            <MudText Style="font-size: 11px; font-weight: bolder; color: black">
-                <MudImage Src="icons8-bootstrap-48.png" Style="height: 19px; width: 19px;" />
-                Bootstrap
-            </MudText>
-
-            <MudText Style="color: limegreen; font-size: 13px; font-weight: bolder">C#</MudText>
-
-            <MudText Style="font-size: 11px; font-weight: bolder; color: black">
-                <MudIcon Icon="@Icons.Custom.Brands.MudBlazor" Color="Color.Primary" Style="height:18px; width: 18px" />MudBlazor
-            </MudText>
-
-            <MudText Style="font-size: 11px; font-weight: bolder; color: black">
-                <MudIcon Icon="@Icons.Custom.Brands.Microsoft" Color="Color.Success" Style="height:18px; width: 18px" />.NET
-            </MudText>
-        </MudContainer>
-        <MudContainer>
-            <MudText Style="font-size: 11px; color: black">
-                Developed By: <MudText Style="font-size: 11px; font-weight: bolder">Guiller Santos</MudText>
-            </MudText>
-        </MudContainer>
-    </MudContainer>
-</MudGrid>
+</MudLayout>
 
 
 @code {
-    private TimelinePosition position { get; set; } = TimelinePosition.Alternate;
-    private TimelineOrientation orientation { get; set; } = TimelineOrientation.Horizontal;
-    private bool reverse { get; set; }
 
-    private bool IsSwitchDisabled()
-    {
-        if (position == TimelinePosition.Alternate)
-            return false;
-        else
-            reverse = false;
-        return true;
-    }
 }
 
 

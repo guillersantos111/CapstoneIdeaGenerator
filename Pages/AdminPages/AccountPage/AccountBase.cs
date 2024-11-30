@@ -13,9 +13,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
         [Inject] ISnackbar Snackbar { get; set; }
         [Inject] NavigationManager NavigationManager { get; set; }
 
-        public ICollection<AccountDTO> Admins { get; set; } = new List<AccountDTO>();
+        public ICollection<AdminAccountDTO> Admins { get; set; } = new List<AdminAccountDTO>();
         public static AdminRegisterDTO register = new AdminRegisterDTO();
-        public List<AccountDTO> accounts = new List<AccountDTO>();
+        public List<AdminAccountDTO> accounts = new List<AdminAccountDTO>();
         public MudForm form;
         public string message = string.Empty;
         public bool isLoading = false;
@@ -30,7 +30,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
             try
             {
                 var response = await authenticationService.GetAllAccountsAsync();
-                Admins = response?.ToList() ?? new List<AccountDTO>();
+                Admins = response?.ToList() ?? new List<AdminAccountDTO>();
 
                 if (response == null)
                 {
@@ -43,7 +43,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
             }
             catch (Exception ex)
             {
-                Snackbar.Add($"Exception Error: {ex.Message}");
+                Snackbar.Add($"Exception Error: {ex.Message}", Severity.Error);
                 NavigationManager.NavigateTo("/home");
             }
 
@@ -68,16 +68,23 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
             await LoadAccounts();
         }
 
-       // public async Task RemoveAccount(int id)
-       // {
-          // bool? confirm = await DialogService.ShowMessageBox("Delete Confirmation", "Are you sure you want to delete this Account?", yesText: "Delete", cancelText: "Cancel");
 
-           // if (confirm == true)
-           // {
-           //    await authenticationService.RemoveAccount(id);
-           //    Snackbar.Add("Account Remove Successfully", Severity.Success);
-           //    await LoadAccounts();
-           // }
-        // }
+        public async Task EditAdmin(string email)
+        {
+
+        }
+
+
+       public async Task RemoveAccount(string email)
+       {
+          bool? confirm = await DialogService.ShowMessageBox("Delete Confirmation", "Are you sure you want to delete this Account?", yesText: "Delete", cancelText: "Cancel");
+
+           if (confirm == true)
+           {
+               await authenticationService.RemoveAdminAsync(email);
+               Snackbar.Add("Account Remove Successfully", Severity.Success);
+               await LoadAccounts();
+           }
+       }
     }
 }

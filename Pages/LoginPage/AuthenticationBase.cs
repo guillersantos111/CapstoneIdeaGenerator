@@ -21,19 +21,18 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
         [Inject] public AuthenticationStateProvider AuthenticationStateProvider { get; set; }
 
         public AdminLoginDTO login = new AdminLoginDTO();
-        public AccountDTO admin = new AccountDTO();
+        public AdminAccountDTO admin = new AdminAccountDTO();
         public string responseMessage = string.Empty;
         public bool isSuccess;
         public bool isLoading = false;
 
         public async Task LoginOnClick()
         {
-            
             var response = await AuthService.LoginAsync(login);
 
             if (response.IsSuccess)
             {
-                isLoading = true;
+                isLoading = false;
                 NavigationManager.NavigateTo("/dashboard");
             }
             else

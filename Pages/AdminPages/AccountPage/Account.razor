@@ -5,7 +5,7 @@
 
 
 <MudGrid Justify="Justify.Center">
-    <MudText Class="mt-20 pt-10 fw-bolder" Style="color: white" Typo="Typo.h3">Manage Account</MudText>
+    <MudText Class="mt-20 pt-10 fw-bolder" Style="color: white" Typo="Typo.h4">Manage Accounts</MudText>
 
     <MudItem Class="mt-2 col-lg-12 row g-2 justify-content-center">
         <MudPaper Class="col-lg-4 me-6 mb-6" Elevation="5" Style="height: 650px; width: 100%; max-width: 400px">
@@ -42,6 +42,7 @@
                         <MudTh>Gender</MudTh>
                         <MudTh>Age</MudTh>
                         <MudTh>Date Joined</MudTh>
+                        <MudTh>Actions</MudTh>
                     </HeaderContent>
                     <RowTemplate>
                         <MudTd>@context.Name</MudTd>
@@ -49,6 +50,9 @@
                         <MudTd>@context.Gender</MudTd>
                         <MudTd>@context.Age</MudTd>
                         <MudTd>@context.DateJoined.ToString("yyyy-MM-dd")</MudTd>
+                        <MudTh>
+                            <MudIconButton Icon="@Icons.Material.Filled.RemoveModerator" Color="Color.Success" OnClick="() => RemoveAccount(context.Email)"/>
+                        </MudTh>
                     </RowTemplate>
                 </MudTable>
             </MudContainer>

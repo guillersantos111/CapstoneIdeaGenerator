@@ -39,7 +39,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
             }
             catch (Exception ex)
             {
-                Snackbar.Add($"Exception Error: {ex.Message}");
+                Snackbar.Add($"Exception Error: {ex.Message}", Severity.Error);
                 NavigationManager.NavigateTo("/home");
             }
 

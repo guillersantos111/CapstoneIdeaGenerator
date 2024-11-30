@@ -82,12 +82,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.UserPages.GeneratorPage
             }
             catch (Exception)
             {
-                Snackbar.Add($"No {selectedProjectType} Project Type For this Industry", Severity.Info);
+                Snackbar.Add($"No {selectedProjectType} Project Type For this Industry", Severity.Warning);
             }
-            finally
-            {
-                isLoading = false;
-            }
+            isLoading = false;
         }
 
 
@@ -100,11 +97,12 @@ namespace CapstoneIdeaGenerator.Client.Pages.UserPages.GeneratorPage
                 generatedCapstone = await generatorService.GetByProjectTypeAndCategory(selectedCategory!, selectedProjectType!);
                 StateHasChanged();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Snackbar.Add($"Error Generating Next Idea: {ex.Message}", Severity.Error);
+                Snackbar.Add($"No {selectedProjectType} Project Type For this Industry", Severity.Warning);
             }
         }
+
 
         public async Task SubmitRating()
         {

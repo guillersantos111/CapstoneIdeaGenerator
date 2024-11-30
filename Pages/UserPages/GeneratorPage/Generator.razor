@@ -17,9 +17,8 @@ else
             </MudText>
         </MudContainer>
 
-        <MudContainer Class="d-flex justify-content-center">
-            <MudItem Class="col-lg-12 row justify-content-center">
-                <MudPaper Class="mud-paper-1 col-lg-8 mt-10" Elevation="10">
+            <MudItem Class="col-lg-12 row gap-4 justify-content-center">
+                <MudPaper Class="col-lg-8" Style="height: 620px; width: 510px" Elevation="20">
                     <MudContainer Class="text-center">
                         <MudContainer>
                             <MudText Class="mt-5 fs-4">Filter</MudText>
@@ -62,7 +61,7 @@ else
                 </MudPaper>
 
 
-                <MudPaper Class="mud-paper-2 col-lg-4 ms-10 mt-10 mb-10 p-4 position-relative" Elevation="10">
+                <MudPaper Class="col-lg-4 position-relative" Style="height: 620px; width: 630px" Elevation="20">
                     @if (isGenerated)
                     {
                         <MudContainer Class="mt-5">
@@ -73,10 +72,10 @@ else
                         </MudContainer>
 
                         <MudContainer Class="mt-10 mb-5">
-                            <MudContainer Class="d-flex d-md-flex" Style="color: gray;">
-                                <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: palegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.ProgLanguages</MudText>
-                                <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: palegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Databases</MudText>
-                                <MudText Style="height: 20px; min-width: 120px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: palegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Frameworks</MudText>
+                            <MudContainer Class="d-flex d-md-flex" Style="color: White;">
+                                <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: limegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.ProgLanguages</MudText>
+                                <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: limegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Databases</MudText>
+                            <MudText Style="height: 20px; min-width: 120px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: limegreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Frameworks</MudText>
                             </MudContainer>
                         </MudContainer>
 
@@ -99,7 +98,6 @@ else
                     }
                 </MudPaper>
             </MudItem>
-        </MudContainer>
 
     </MudGrid>
 }

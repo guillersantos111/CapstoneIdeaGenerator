@@ -6,11 +6,10 @@
 <MudSnackbarProvider />
 <MudPopoverProvider />
 
-<MudLayout>
+<MudGrid Justify="Justify.Center">
     <MudContainer>
         <MudAppBar Style="background-color: transparent; z-index: 100">
             <MudContainer Class="d-none d-lg-flex justify-content-start">
-                <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Href="/authentication">Login</MudButton>
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Href="/home">Home</MudButton>
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Href="/about">About</MudButton>
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/generator">Generator</MudButton>
@@ -20,9 +19,7 @@
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="@ToggleDrawer" Edge="Edge.End" Class="d-lg-none" />
 
             <MudContainer Class="d-none d-lg-flex justify-content-end">
-                <MudIconButton Class="me-2" Color="Color.Primary" Icon="@Icons.Custom.Brands.Facebook" Target="_blank" />
-                <MudIconButton Class="me-2" Color="Color.Primary" Icon="@Icons.Custom.Brands.LinkedIn" Target="_blank" />
-                <MudIconButton Class="me-2" Color="Color.Primary" Icon="@Icons.Custom.Brands.GitHub" Link="https://github.com/guillersantos111" Target="_blank" />
+                <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Href="/authentication">Login</MudButton>
             </MudContainer>
         </MudAppBar>
 
@@ -44,14 +41,36 @@
         </MudDrawer>
     </MudContainer>
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="pt-8"
-                  Style="background-image: url(VividBg.jpg);
+                  Style="background-image: url(SampleBG.jpg);
                                                background-position: center;
-                                               background-repeat: no-repeat;
                                                background-size: cover;
-                                               height: 100vh;">
+                                               height: 103vh;">
         @Body
     </MudContainer>
-</MudLayout>
+    <MudContainer Style="background-color: transparent; position: absolute; bottom: 0; width: 100%;">
+        <MudContainer Class="d-flex justify-content-center align-items-center gap-4">
+            <MudText Style="font-size: 11px; font-weight: bolder; color: white;">
+                <MudImage Src="icons8-bootstrap-48.png" Style="height: 19px; width: 19px;" />
+                Bootstrap
+            </MudText>
+
+            <MudText Style="color: limegreen; font-size: 13px; font-weight: bolder">C#</MudText>
+
+            <MudText Style="font-size: 11px; font-weight: bolder; color: white;">
+                <MudIcon Icon="@Icons.Custom.Brands.MudBlazor" Color="Color.Primary" Style="height:18px; width: 18px;" />MudBlazor
+            </MudText>
+
+            <MudText Style="font-size: 11px; font-weight: bolder; color: white;">
+                <MudIcon Icon="@Icons.Custom.Brands.Microsoft" Color="Color.Success" Style="height:18px; width: 18px;" />.NET
+            </MudText>
+        </MudContainer>
+        <MudContainer Class="text-center mt-3">
+            <MudText Style="font-size: 11px; color: white;">
+                Developed By: <MudText Style="font-size: 11px; font-weight: bolder;">Guiller Santos</MudText>
+            </MudText>
+        </MudContainer>
+    </MudContainer>
+</MudGrid>
 
 
 

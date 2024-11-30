@@ -9,6 +9,8 @@ namespace CapstoneIdeaGenerator.Client.Services.Interfaces
         Task<Response> ForgotPassword(AdminForgotPasswordDTO request);
         Task<string> ResetPassword(AdminPasswordResetDTO request);
         Task<string> GetAdminNameAsync();
-        Task<IEnumerable<AccountDTO>> GetAllAccountsAsync();
+        Task<IEnumerable<AdminAccountDTO>> GetAllAccountsAsync();
+        Task<AdminDTO> EditAdminAsync(string email, AdminEditAccountDTO updatedAdmin);
+        Task RemoveAdminAsync(string email);
     }
 }

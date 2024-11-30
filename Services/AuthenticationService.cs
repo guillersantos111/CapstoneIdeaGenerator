@@ -98,15 +98,43 @@ namespace CapstoneIdeaGenerator.Client.Services
         }
 
 
+        public async Task<AdminDTO> EditAdminAsync(string email, AdminEditAccountDTO updatedAdmin)
+        {
+            try
+            {
+                var response = await _httpClient.PutAsJsonAsync($"/api/Authentication/edit/{email}", updatedAdmin);
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<AdminDTO>();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error editing admin: {ex.Message}");
+            }
+        }
+
+        public async Task RemoveAdminAsync(string email)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"/api/Authentication/remove/{email}");
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error removing admin: {ex.Message}");
+            }
+        }
+
+
         public async Task<string> GetAdminNameAsync()
         {
             return await _httpClient.GetFromJsonAsync<string>("/api/Authentication");
         }
 
 
-        public async Task<IEnumerable<AccountDTO>> GetAllAccountsAsync()
+        public async Task<IEnumerable<AdminAccountDTO>> GetAllAccountsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<AccountDTO>>("/api/Authentication/accounts");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<AdminAccountDTO>>("/api/Authentication/accounts");
         }
     }
 }

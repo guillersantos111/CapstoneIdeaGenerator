@@ -2,7 +2,7 @@
 
 namespace CapstoneIdeaGenerator.Client.Models.DTO
 {
-    public class AccountDTO
+    public class AdminAccountDTO
     {
         public int AdminId { get; set; }
 
