@@ -2,6 +2,7 @@
 using CapstoneIdeaGenerator.Client.Components;
 using CapstoneIdeaGenerator.Client.Models.DTO;
 using CapstoneIdeaGenerator.Client.Services.Interfaces;
+using CapstoneIdeaGenerator.Client.Utilities;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
@@ -20,6 +21,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
         [Inject] public CustomAuthStateProvider CustomAuthStateProvider { get; set; }
         [Inject] public AuthenticationStateProvider AuthenticationStateProvider { get; set; }
 
+        public ShowPasswordUtil showPasswordUtil = new ShowPasswordUtil();
         public AdminLoginDTO login = new AdminLoginDTO();
         public AdminAccountDTO admin = new AdminAccountDTO();
         public string responseMessage = string.Empty;
@@ -28,6 +30,8 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
 
         public async Task LoginOnClick()
         {
+            isLoading = true;
+
             var response = await AuthService.LoginAsync(login);
 
             if (response.IsSuccess)
@@ -40,6 +44,12 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
                 isLoading = false;
                 responseMessage = response.Message;
             }
+        }
+
+
+        public void ShowPasswordClick()
+        {
+            showPasswordUtil.Toggle();
         }
 
 

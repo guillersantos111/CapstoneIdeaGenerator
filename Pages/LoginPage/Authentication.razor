@@ -20,8 +20,11 @@ else
                                 <MudCardContent>
                                     <MudText Style="font-weight: bolder; margin: 4px;" Typo="Typo.h5">Login</MudText>
 
-                                    <MudTextField Class="mb-5" T="string" Label="Username" @bind-Value="login.Email" Variant="Variant.Outlined" FullWidth />
-                                    <MudTextField Class="mb-5" T="string" Label="Password" @bind-Value="login.Password" Variant="Variant.Outlined" InputType="InputType.Password" FullWidth />
+                                    <MudTextField Class="mb-5" T="string" Label="Username" @bind-Value="login.Email" Variant="Variant.Outlined" FullWidth
+                                                  For="@(() => login.Email)" InputType="InputType.Text" />
+                                    <MudTextField Class="mb-5" T="string" Label="Password" @bind-Value="login.Password" Variant="Variant.Outlined" FullWidth
+                                                  Adornment="Adornment.End" InputType="@showPasswordUtil.InputType" AdornmentIcon="@showPasswordUtil.Icon" OnAdornmentClick="ShowPasswordClick"
+                                                  AdornmentAriaLabel="Show Password" For="@(() => login.Password)" />
 
                                     @if (!string.IsNullOrEmpty(responseMessage))
                                     {
@@ -37,12 +40,12 @@ else
                 </MudContainer>
 
                 <MudContainer Class="mt-20 pt-20">
-                        <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h4">
-                            Capstone Shared Ideas Generator Admin Login
-                        </MudText>
+                    <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h4">
+                        Capstone Shared Ideas Generator Admin Login
+                    </MudText>
                     <MudImage Src="Login.png" Style="width: 550px; height: 550px; background-color: transparent;"></MudImage>
                 </MudContainer>
             </MudContainer>
         </MudContainer>
     </MudLayout>
- }
+}

@@ -1,5 +1,6 @@
 ﻿using CapstoneIdeaGenerator.Client.Models.DTO;
 using CapstoneIdeaGenerator.Client.Services.Interfaces;
+using CapstoneIdeaGenerator.Client.Utilities;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
@@ -12,6 +13,7 @@ namespace CapstoneIdeaGenerator.Client.Components
         [CascadingParameter] MudDialogInstance MudDialog { get; set; }
         [Inject] IAuthenticationService AuthenticationService { get; set; }
         [Inject] ISnackbar Snackbar { get; set; }
+        public ShowPasswordUtil showPassword { get; set; } = new ShowPasswordUtil();
         public Response response { get; set; } = new Response();
 
         public async Task Submit()
@@ -53,6 +55,12 @@ namespace CapstoneIdeaGenerator.Client.Components
             {
                 response.ErrorMessage = ex.Message;
             }
+        }
+
+
+        public void ShowPassword()
+        {
+            showPassword.Toggle();
         }
 
 

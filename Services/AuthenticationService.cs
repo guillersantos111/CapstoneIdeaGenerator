@@ -12,15 +12,15 @@ namespace CapstoneIdeaGenerator.Client.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
-        private readonly HttpClient _httpClient;
-        private readonly ILocalStorageService _localStorage;
-        private readonly AuthenticationStateProvider _authenticationStateProvider;
+        private readonly HttpClient httpClient;
+        private readonly ILocalStorageService localStorage;
+        private readonly AuthenticationStateProvider authenticationStateProvider;
 
         public AuthenticationService(HttpClient httpClient, ILocalStorageService localStorage, AuthenticationStateProvider authenticationStateProvider)
         {
-            _httpClient = httpClient;
-            _localStorage = localStorage;
-            _authenticationStateProvider = authenticationStateProvider;
+            this.httpClient = httpClient;
+            this.localStorage = localStorage;
+            this.authenticationStateProvider = authenticationStateProvider;
         }
 
 
@@ -28,13 +28,13 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var result = await _httpClient.PostAsJsonAsync("/api/Authentication/login", request);
+                var result = await httpClient.PostAsJsonAsync("/api/Authentication/login", request);
                 var token = await result.Content.ReadAsStringAsync();
 
                 if (result.IsSuccessStatusCode)
                 {
-                    await _localStorage.SetItemAsync("token", token);
-                    await _authenticationStateProvider.GetAuthenticationStateAsync();
+                    await localStorage.SetItemAsync("Token", token);
+                    await authenticationStateProvider.GetAuthenticationStateAsync();
                     return new Response { IsSuccess = true, Message = "Login successful" };
                 }
                 else
@@ -52,7 +52,7 @@ namespace CapstoneIdeaGenerator.Client.Services
 
         public async Task<bool> RegisterAsync(AdminRegisterDTO request)
         {
-            var response = await _httpClient.PostAsJsonAsync("/api/Authentication/register", request);
+            var response = await httpClient.PostAsJsonAsync("/api/Authentication/register", request);
             return response.IsSuccessStatusCode;
         }
 
@@ -61,7 +61,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("/api/Authentication/forgot-password", request);
+                var response = await httpClient.PostAsJsonAsync("/api/Authentication/forgot-password", request);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -82,7 +82,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("/api/Authentication/reset-password", request);
+                var response = await httpClient.PostAsJsonAsync("/api/Authentication/reset-password", request);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -102,7 +102,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var response = await _httpClient.PutAsJsonAsync($"/api/Authentication/edit/{email}", updatedAdmin);
+                var response = await httpClient.PutAsJsonAsync($"/api/Authentication/edit/{email}", updatedAdmin);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadFromJsonAsync<AdminDTO>();
             }
@@ -116,7 +116,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var response = await _httpClient.DeleteAsync($"/api/Authentication/remove/{email}");
+                var response = await httpClient.DeleteAsync($"/api/Authentication/remove/{email}");
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
@@ -128,13 +128,13 @@ namespace CapstoneIdeaGenerator.Client.Services
 
         public async Task<string> GetAdminNameAsync()
         {
-            return await _httpClient.GetFromJsonAsync<string>("/api/Authentication");
+            return await httpClient.GetFromJsonAsync<string>("/api/Authentication");
         }
 
 
         public async Task<IEnumerable<AdminAccountDTO>> GetAllAccountsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<AdminAccountDTO>>("/api/Authentication/accounts");
+            return await httpClient.GetFromJsonAsync<IEnumerable<AdminAccountDTO>>("/api/Authentication/accounts");
         }
     }
 }

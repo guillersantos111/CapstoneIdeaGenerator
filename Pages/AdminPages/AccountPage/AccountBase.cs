@@ -1,5 +1,6 @@
 ﻿using CapstoneIdeaGenerator.Client.Models.DTO;
 using CapstoneIdeaGenerator.Client.Services.Interfaces;
+using CapstoneIdeaGenerator.Client.Utilities;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Runtime.CompilerServices;
@@ -16,6 +17,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
         public ICollection<AdminAccountDTO> Admins { get; set; } = new List<AdminAccountDTO>();
         public static AdminRegisterDTO register = new AdminRegisterDTO();
         public List<AdminAccountDTO> accounts = new List<AdminAccountDTO>();
+        public ShowPasswordUtil showPassword { get; set; } = new ShowPasswordUtil();
         public MudForm form;
         public string message = string.Empty;
         public bool isLoading = false;
@@ -86,5 +88,10 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
                await LoadAccounts();
            }
        }
+
+        public void ShowPassword()
+        {
+            showPassword.Toggle();
+        }
     }
 }
