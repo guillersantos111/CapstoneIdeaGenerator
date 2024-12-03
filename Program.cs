@@ -1,6 +1,6 @@
 global using Microsoft.AspNetCore.Components.Authorization;
 using Blazored.LocalStorage;
-using CapstoneIdeaGenerator.Client.Services.Interfaces;
+using CapstoneIdeaGenerator.Client.Services.Contracts;
 using CapstoneIdeaGenerator.Client.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -13,9 +13,10 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped<ICapstoneService, CapstoneService>();
 builder.Services.AddScoped<IGeneratorService, GeneratorService>();
-builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IRatingsService, RatingsService>();
 builder.Services.AddScoped<IClipboardService, ClipboardService>();
+builder.Services.AddScoped<IActivityLogsService, ActivityLogsService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 builder.Services.AddScoped<CustomAuthStateProvider>();
 builder.Services.AddAuthorizationCore();

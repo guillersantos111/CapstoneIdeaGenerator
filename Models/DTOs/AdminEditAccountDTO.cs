@@ -1,4 +1,4 @@
-﻿namespace CapstoneIdeaGenerator.Client.Models.DTO
+﻿namespace CapstoneIdeaGenerator.Client.Models.DTOs
 {
     public class AdminEditAccountDTO
     {

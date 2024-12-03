@@ -1,4 +1,4 @@
-﻿namespace CapstoneIdeaGenerator.Client.Services.Interfaces
+﻿namespace CapstoneIdeaGenerator.Client.Services.Contracts
 {
     public interface IClipboardService
     {

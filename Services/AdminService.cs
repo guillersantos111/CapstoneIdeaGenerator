@@ -1,22 +1,17 @@
-﻿using CapstoneIdeaGenerator.Client.Services.Interfaces;
+﻿using CapstoneIdeaGenerator.Client.Services.Contracts;
 using Blazored.LocalStorage;
 using System.Net.Http.Json;
-using CapstoneIdeaGenerator.Client.Models.DTO;
-using Newtonsoft.Json;
-using System.Net.Http.Headers;
-using System.Text;
-using Microsoft.Win32;
-using System.Net.Http;
+using CapstoneIdeaGenerator.Client.Models.DTOs;
 
 namespace CapstoneIdeaGenerator.Client.Services
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AdminService : IAdminService
     {
         private readonly HttpClient httpClient;
         private readonly ILocalStorageService localStorage;
         private readonly AuthenticationStateProvider authenticationStateProvider;
 
-        public AuthenticationService(HttpClient httpClient, ILocalStorageService localStorage, AuthenticationStateProvider authenticationStateProvider)
+        public AdminService(HttpClient httpClient, ILocalStorageService localStorage, AuthenticationStateProvider authenticationStateProvider)
         {
             this.httpClient = httpClient;
             this.localStorage = localStorage;
@@ -28,7 +23,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var result = await httpClient.PostAsJsonAsync("/api/Authentication/login", request);
+                var result = await httpClient.PostAsJsonAsync("/api/Admin/login", request);
                 var token = await result.Content.ReadAsStringAsync();
 
                 if (result.IsSuccessStatusCode)
@@ -52,8 +47,23 @@ namespace CapstoneIdeaGenerator.Client.Services
 
         public async Task<bool> RegisterAsync(AdminRegisterDTO request)
         {
-            var response = await httpClient.PostAsJsonAsync("/api/Authentication/register", request);
+            var response = await httpClient.PostAsJsonAsync("/api/Admin/register", request);
             return response.IsSuccessStatusCode;
+        }
+
+
+        public async Task<AdminGetByEmailDTO?> GetAdminByEmail(string email)
+        {
+            try
+            {
+                var response = await httpClient.GetFromJsonAsync<AdminGetByEmailDTO>($"/api/Admin/getbyemail?email={email}");
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error Fetching Admin By Email: {ex.Message}");
+                return null;
+            }
         }
 
 
@@ -61,7 +71,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var response = await httpClient.PostAsJsonAsync("/api/Authentication/forgot-password", request);
+                var response = await httpClient.PostAsJsonAsync("/api/Admin/forgot-password", request);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -82,7 +92,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var response = await httpClient.PostAsJsonAsync("/api/Authentication/reset-password", request);
+                var response = await httpClient.PostAsJsonAsync("/api/Admin/reset-password", request);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -102,7 +112,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var response = await httpClient.PutAsJsonAsync($"/api/Authentication/edit/{email}", updatedAdmin);
+                var response = await httpClient.PutAsJsonAsync($"/api/Admin/edit/{email}", updatedAdmin);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadFromJsonAsync<AdminDTO>();
             }
@@ -116,7 +126,7 @@ namespace CapstoneIdeaGenerator.Client.Services
         {
             try
             {
-                var response = await httpClient.DeleteAsync($"/api/Authentication/remove/{email}");
+                var response = await httpClient.DeleteAsync($"/api/Admin/remove/{email}");
                 response.EnsureSuccessStatusCode();
             }
             catch (Exception ex)
@@ -128,13 +138,13 @@ namespace CapstoneIdeaGenerator.Client.Services
 
         public async Task<string> GetAdminNameAsync()
         {
-            return await httpClient.GetFromJsonAsync<string>("/api/Authentication");
+            return await httpClient.GetFromJsonAsync<string>("/api/Admin");
         }
 
 
         public async Task<IEnumerable<AdminAccountDTO>> GetAllAccountsAsync()
         {
-            return await httpClient.GetFromJsonAsync<IEnumerable<AdminAccountDTO>>("/api/Authentication/accounts");
+            return await httpClient.GetFromJsonAsync<IEnumerable<AdminAccountDTO>>("/api/Admin/accounts");
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Blazored.LocalStorage;
 using CapstoneIdeaGenerator.Client.Components;
-using CapstoneIdeaGenerator.Client.Models.DTO;
-using CapstoneIdeaGenerator.Client.Services.Interfaces;
+using CapstoneIdeaGenerator.Client.Models.DTOs;
+using CapstoneIdeaGenerator.Client.Services.Contracts;
 using CapstoneIdeaGenerator.Client.Utilities;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
@@ -13,17 +13,19 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
         private readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Large, FullWidth = true, NoHeader = true };
 
         [Inject] public HttpClient httpClient { get; set; }
-        [Inject] public IAuthenticationService AuthService { get; set; }
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public ILocalStorageService LocalStorage { get; set; }
         [Inject] public ISnackbar Snackbar { get; set; }
         [Inject] public IDialogService DialogService { get; set; }
+        [Inject] public IAdminService AdminService { get; set; }
+        [Inject] public IActivityLogsService ActivityLogsService { get; set; }
         [Inject] public CustomAuthStateProvider CustomAuthStateProvider { get; set; }
         [Inject] public AuthenticationStateProvider AuthenticationStateProvider { get; set; }
 
         public ShowPasswordUtil showPasswordUtil = new ShowPasswordUtil();
+        public ActivityLogsDTO adminLogs = new ActivityLogsDTO();
         public AdminLoginDTO login = new AdminLoginDTO();
-        public AdminAccountDTO admin = new AdminAccountDTO();
+        public AdminAccountDTO account = new AdminAccountDTO();
         public string responseMessage = string.Empty;
         public bool isSuccess;
         public bool isLoading = false;
@@ -32,11 +34,25 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
         {
             isLoading = true;
 
-            var response = await AuthService.LoginAsync(login);
+            var response = await AdminService.LoginAsync(login);
 
             if (response.IsSuccess)
             {
                 isLoading = false;
+
+                var fetchadmin = await AdminService.GetAdminByEmail(login.Email);
+
+                adminLogs = new ActivityLogsDTO
+                {
+                    AdminId = fetchadmin.AdminId,
+                    Email = fetchadmin.Email,
+                    Name = fetchadmin.Name,
+                    Action = "Logged In",
+                    Details = "Admin Successfully Logged In",
+                    Timestamp = DateTime.UtcNow
+                };
+
+                await ActivityLogsService.RecordLogsActivity(adminLogs);
                 NavigationManager.NavigateTo("/dashboard");
             }
             else

@@ -33,7 +33,7 @@
                                   AdornmentAriaLabel="Toggle Password Visibility"
                                   InputType="@showPassword.InputType" Required="true" />
 
-                    <MudButton Class="mt-15" Style="height: 50px; background-color: dodgerblue; color:white"
+                    <MudButton Class="mt-15" Style="height: 50px; background-color:  rgb(133,15,225); color:white"
                                Variant="Variant.Filled" Disabled="@isLoading" OnClick="RegisterOnClick">
                         Register
                     </MudButton>
@@ -59,7 +59,7 @@
                         <MudTd>@context.Age</MudTd>
                         <MudTd>@context.DateJoined.ToString("yyyy-MM-dd")</MudTd>
                         <MudTh>
-                            <MudIconButton Icon="@Icons.Material.Filled.RemoveModerator" Color="Color.Success" OnClick="() => RemoveAccount(context.Email)" />
+                            <MudIconButton Icon="@Icons.Material.Filled.PersonRemoveAlt1" Color="Color.Success" OnClick="() => RemoveAccount(context.Email)" />
                         </MudTh>
                     </RowTemplate>
                 </MudTable>

@@ -1,5 +1,5 @@
-﻿using CapstoneIdeaGenerator.Client.Models.DTO;
-using CapstoneIdeaGenerator.Client.Services.Interfaces;
+﻿using CapstoneIdeaGenerator.Client.Models.DTOs;
+using CapstoneIdeaGenerator.Client.Services.Contracts;
 using System.Net.Http;
 using System.Net.Http.Json;
 
@@ -19,15 +19,7 @@ namespace CapstoneIdeaGenerator.Client.Services
             try
             {
                 var response = await httpClient.PostAsJsonAsync("/api/Ratings/submit", ratingRequest);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return response.IsSuccessStatusCode;
             }
             catch (Exception ex)
             {
@@ -39,19 +31,34 @@ namespace CapstoneIdeaGenerator.Client.Services
 
         public async Task<List<RatingRequestDTO>> GetAllRatings()
         {
-            var response = await httpClient.GetAsync("/api/Ratings");
-            response.EnsureSuccessStatusCode();
-
-            return await response.Content.ReadFromJsonAsync<List<RatingRequestDTO>>() ?? new List<RatingRequestDTO>();
+            try
+            {
+                var response = await httpClient.GetAsync("/api/Ratings");
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<List<RatingRequestDTO>>() ?? new List<RatingRequestDTO>();
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error Fetching All Ratings: { ex.Message}" );
+                return new List<RatingRequestDTO>();
+            }
         }
 
 
         public async Task<List<RatingsDTO>> GetAllRatingsDetailes()
         {
-            var response = await httpClient.GetAsync("/api/Ratings/allDetailes");
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                var response = await httpClient.GetAsync("/api/Ratings/allDetailes");
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<List<RatingsDTO>>() ?? new List<RatingsDTO>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error Fetching All Ratings: {ex.Message}");
+                return new List<RatingsDTO>();
+            }
 
-            return await response.Content.ReadFromJsonAsync<List<RatingsDTO>>() ?? new List<RatingsDTO>();
         }
     }
 }

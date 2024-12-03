@@ -1,5 +1,5 @@
-﻿using CapstoneIdeaGenerator.Client.Models.DTO;
-using CapstoneIdeaGenerator.Client.Services.Interfaces;
+﻿using CapstoneIdeaGenerator.Client.Models.DTOs;
+using CapstoneIdeaGenerator.Client.Services.Contracts;
 using CapstoneIdeaGenerator.Client.Utilities;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
@@ -11,7 +11,7 @@ namespace CapstoneIdeaGenerator.Client.Components
         [Parameter] public AdminForgotPasswordDTO AdminForgot { get; set; } = new AdminForgotPasswordDTO();
         public readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, NoHeader = true };
         [CascadingParameter] MudDialogInstance MudDialog { get; set; }
-        [Inject] IAuthenticationService AuthenticationService { get; set; }
+        [Inject] IAdminService AuthenticationService { get; set; }
         [Inject] IClipboardService ClipboardService { get; set; }
         [Inject] IDialogService DialogService { get; set; }
 

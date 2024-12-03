@@ -1,4 +1,4 @@
-﻿using CapstoneIdeaGenerator.Client.Services.Interfaces;
+﻿using CapstoneIdeaGenerator.Client.Services.Contracts;
 using Microsoft.JSInterop;
 
 namespace CapstoneIdeaGenerator.Client.Services

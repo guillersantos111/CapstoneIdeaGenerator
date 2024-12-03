@@ -1,6 +1,6 @@
-﻿using CapstoneIdeaGenerator.Client.Models.DTO;
+﻿using CapstoneIdeaGenerator.Client.Models.DTOs;
 
-namespace CapstoneIdeaGenerator.Client.Services.Interfaces
+namespace CapstoneIdeaGenerator.Client.Services.Contracts
 {
     public interface IGeneratorService
     {

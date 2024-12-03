@@ -1,14 +1,14 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
 
-<MudThemeProvider />
+<MudThemeProvider IsDarkMode="true"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudPopoverProvider />
 
 <MudGrid Justify="Justify.Center">
     <MudContainer>
-        <MudAppBar Style="background-color: transparent; z-index: 100">
+        <MudAppBar Style="background-color: rgb(133,15,225); z-index: 100">
             <MudContainer Class="d-none d-lg-flex justify-content-start">
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Href="/home">Home</MudButton>
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Href="/about">About</MudButton>
@@ -40,11 +40,7 @@
             </MudContainer>
         </MudDrawer>
     </MudContainer>
-    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="pt-8"
-                  Style="background-image: url(SampleBG.jpg);
-                                               background-position: center;
-                                               background-size: cover;
-                                               height: 103vh;">
+    <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="pt-8">
         @Body
     </MudContainer>
     <MudContainer Style="background-color: transparent; position: absolute; bottom: 0; width: 100%;">

@@ -1,5 +1,5 @@
-﻿using CapstoneIdeaGenerator.Client.Models.DTO;
-using CapstoneIdeaGenerator.Client.Services.Interfaces;
+﻿using CapstoneIdeaGenerator.Client.Models.DTOs;
+using CapstoneIdeaGenerator.Client.Services.Contracts;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 

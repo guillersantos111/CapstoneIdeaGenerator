@@ -3,36 +3,47 @@
   "WorkspaceRootPath": "D:\\Projects\\CapstoneIdeaGenerator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\controllers\\activitylogscontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\pages\\adminpages\\accountpage\\accountbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:pages\\adminpages\\accountpage\\accountbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\controllers\\capstonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\services\\contracts\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\services\\activitylogsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\services\\interfaces\\iactivitylogsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\pages\\adminpages\\capstonepage\\capstone.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:pages\\adminpages\\capstonepage\\capstone.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\entities\\models\\activitylogs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\pages\\adminpages\\adminratingpage\\adminratings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:pages\\adminpages\\adminratingpage\\adminratings.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\entities\\dtos\\activitylogsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\data\\dbcontext\\webapplicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24800655-F9AF-4DA3-A4D9-9D93CFB806AC}|..\\CapstoneIdeaGenerator.Server\\CapstoneIdeaGenerator.Server.csproj|d:\\projects\\capstoneideagenerator.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\pages\\adminpages\\admindashboard\\dashboardbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:pages\\adminpages\\admindashboard\\dashboardbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\pages\\adminpages\\admindashboard\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:pages\\adminpages\\admindashboard\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\pages\\adminpages\\admindashboard\\dashboardbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:pages\\adminpages\\admindashboard\\dashboardbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|d:\\projects\\capstoneideagenerator\\shared\\adminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3617AD71-626F-462A-8D89-6890D1F974B3}|CapstoneIdeaGenerator.Client.csproj|solutionrelative:shared\\adminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +53,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,93 +65,119 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Program.cs",
-              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Program.cs",
-              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Program.cs",
-              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Program.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:36:47.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ActivityLogsContoller.cs",
-              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Controllers\\ActivityLogsContoller.cs",
-              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Controllers\\ActivityLogsContoller.cs",
-              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Controllers\\ActivityLogsContoller.cs",
-              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Controllers\\ActivityLogsContoller.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:16:25.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ActivityLogsDTO.cs",
-              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Entities\\DTOs\\ActivityLogsDTO.cs",
-              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Entities\\DTOs\\ActivityLogsDTO.cs",
-              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Entities\\DTOs\\ActivityLogsDTO.cs",
-              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Entities\\DTOs\\ActivityLogsDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:27:05.264Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ActivityLogsService.cs",
-              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\ActivityLogsService.cs",
-              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Services\\ActivityLogsService.cs",
-              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\ActivityLogsService.cs",
-              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Services\\ActivityLogsService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACcAAAAjAAAAAAAAAA==",
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:12:45.559Z",
+              "WhenOpened": "2024-12-03T15:20:38.024Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IActivityLogsService.cs",
-              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\Interfaces\\IActivityLogsService.cs",
-              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Services\\Interfaces\\IActivityLogsService.cs",
-              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\Interfaces\\IActivityLogsService.cs",
-              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Services\\Interfaces\\IActivityLogsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Title": "CapstoneController.cs",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Controllers\\CapstoneController.cs",
+              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Controllers\\CapstoneController.cs",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Controllers\\CapstoneController.cs",
+              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Controllers\\CapstoneController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:11:47.282Z",
+              "WhenOpened": "2024-12-03T15:20:37.366Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "WebApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Data\\DbContext\\WebApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Data\\DbContext\\WebApplicationDbContext.cs",
-              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Data\\DbContext\\WebApplicationDbContext.cs",
-              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Data\\DbContext\\WebApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "IAdminService.cs",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\Contracts\\IAdminService.cs",
+              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Services\\Contracts\\IAdminService.cs",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\Contracts\\IAdminService.cs",
+              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Services\\Contracts\\IAdminService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:08:42.012Z",
+              "WhenOpened": "2024-12-03T15:20:34.279Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ActivityLogs.cs",
-              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Entities\\Models\\ActivityLogs.cs",
-              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Entities\\Models\\ActivityLogs.cs",
-              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Entities\\Models\\ActivityLogs.cs",
-              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Entities\\Models\\ActivityLogs.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABDAAAAAAAAAA==",
+              "Title": "AdminService.cs",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\AdminService.cs",
+              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Services\\AdminService.cs",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\AdminService.cs",
+              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Services\\AdminService.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:01:41.028Z",
+              "WhenOpened": "2024-12-03T15:20:10.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ActivityLogsService.cs",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\ActivityLogsService.cs",
+              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Services\\ActivityLogsService.cs",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\ActivityLogsService.cs",
+              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Services\\ActivityLogsService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T15:20:04.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdminService.cs",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator\\Services\\AdminService.cs",
+              "RelativeDocumentMoniker": "Services\\AdminService.cs",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator\\Services\\AdminService.cs",
+              "RelativeToolTip": "Services\\AdminService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAB0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T15:14:59.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountBase.cs",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\AccountPage\\AccountBase.cs",
+              "RelativeDocumentMoniker": "Pages\\AdminPages\\AccountPage\\AccountBase.cs",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\AccountPage\\AccountBase.cs",
+              "RelativeToolTip": "Pages\\AdminPages\\AccountPage\\AccountBase.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAAEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T15:10:41.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Capstone.razor",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\CapstonePage\\Capstone.razor",
+              "RelativeDocumentMoniker": "Pages\\AdminPages\\CapstonePage\\Capstone.razor",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\CapstonePage\\Capstone.razor",
+              "RelativeToolTip": "Pages\\AdminPages\\CapstonePage\\Capstone.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-03T14:36:36.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminRatings.razor",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\AdminRatingPage\\AdminRatings.razor",
+              "RelativeDocumentMoniker": "Pages\\AdminPages\\AdminRatingPage\\AdminRatings.razor",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\AdminRatingPage\\AdminRatings.razor",
+              "RelativeToolTip": "Pages\\AdminPages\\AdminRatingPage\\AdminRatings.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-03T15:05:44.826Z",
               "EditorCaption": ""
             },
             {
@@ -151,56 +188,35 @@
               "RelativeDocumentMoniker": "Pages\\AdminPages\\AdminDashboard\\DashboardBase.cs",
               "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\AdminDashboard\\DashboardBase.cs",
               "RelativeToolTip": "Pages\\AdminPages\\AdminDashboard\\DashboardBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T12:47:31.289Z",
+              "WhenOpened": "2024-12-03T14:23:45.802Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Dashboard.razor",
               "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\AdminDashboard\\Dashboard.razor",
               "RelativeDocumentMoniker": "Pages\\AdminPages\\AdminDashboard\\Dashboard.razor",
               "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator\\Pages\\AdminPages\\AdminDashboard\\Dashboard.razor",
               "RelativeToolTip": "Pages\\AdminPages\\AdminDashboard\\Dashboard.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAACsAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-02T12:47:30.56Z",
+              "WhenOpened": "2024-12-03T14:22:41.712Z",
               "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "b30c56fb-15ea-4652-bd93-fccdf40ddde1",
-        "Display": 1,
-        "X": 78,
-        "Y": 113,
-        "Width": 1645,
-        "Height": 631,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthenticationService.cs",
-              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\AuthenticationService.cs",
-              "RelativeDocumentMoniker": "..\\CapstoneIdeaGenerator.Server\\Services\\AuthenticationService.cs",
-              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator.Server\\Services\\AuthenticationService.cs",
-              "RelativeToolTip": "..\\CapstoneIdeaGenerator.Server\\Services\\AuthenticationService.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:45:38.599Z",
+              "DocumentIndex": 11,
+              "Title": "AdminLayout.razor",
+              "DocumentMoniker": "D:\\Projects\\CapstoneIdeaGenerator\\Shared\\AdminLayout.razor",
+              "RelativeDocumentMoniker": "Shared\\AdminLayout.razor",
+              "ToolTip": "D:\\Projects\\CapstoneIdeaGenerator\\Shared\\AdminLayout.razor",
+              "RelativeToolTip": "Shared\\AdminLayout.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-03T14:20:35.561Z",
               "EditorCaption": ""
             }
           ]

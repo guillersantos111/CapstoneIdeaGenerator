@@ -1,5 +1,5 @@
 ﻿using Blazored.LocalStorage;
-using CapstoneIdeaGenerator.Client.Services.Interfaces;
+using CapstoneIdeaGenerator.Client.Services.Contracts;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Json;
@@ -93,6 +93,12 @@ namespace CapstoneIdeaGenerator.Client
             }
 
             return null;
+        }
+
+
+        public async Task ClearAdminSession()
+        {
+            await localStorageService.RemoveItemAsync("AdminSession");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CapstoneIdeaGenerator.Client.Models.DTO
+namespace CapstoneIdeaGenerator.Client.Models.DTOs
 {
     public class AdminRegisterDTO
     {
