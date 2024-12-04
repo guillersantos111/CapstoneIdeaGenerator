@@ -3,6 +3,7 @@ using CapstoneIdeaGenerator.Client.Models.DTOs;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using CapstoneIdeaGenerator.Client.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
 {
@@ -15,6 +16,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
         [Inject] IDialogService DialogService { get; set; }
         [Inject] ISnackbar Snackbar { get; set; }
         [Inject] NavigationManager NavigationManager { get; set; }
+        [Inject] IIndependentActivityLogsService IndependentActivityLogsService { get; set; }
         public bool isLoading { get; set; } = false;
 
         protected override async Task OnInitializedAsync()
@@ -61,6 +63,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
             if (!result.Canceled)
             {
                 Snackbar.Add("Capstone Added Successfully!", Severity.Success);
+                await IndependentActivityLogsService.LogAdminAction("Added Capstone");
                 await LoadCapstones();
             }
         }
@@ -74,6 +77,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
             if (!result.Canceled)
             {
                 Snackbar.Add("Capstone Updated Successfully!", Severity.Success);
+                await IndependentActivityLogsService.LogAdminAction("Updated Capstone");
                 await LoadCapstones();
             }
         }
@@ -88,6 +92,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
                 {
                     await CapstoneService.RemoveCapstone(Id);
                     Snackbar.Add("Capstone Removed Successfully!", Severity.Success);
+                    await IndependentActivityLogsService.LogAdminAction("Remove Capstone");
                     await LoadCapstones();
                 }
                 catch (Exception ex)

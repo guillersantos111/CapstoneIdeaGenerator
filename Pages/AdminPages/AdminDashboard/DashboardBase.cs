@@ -10,9 +10,11 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminDashboard
         [Inject]  IActivityLogsService activityLogsService { get; set; }
         [Inject]  ISnackbar snackbar { get; set; }
         [Inject] NavigationManager navigationManager { get; set; }
+        [Inject] IIndependentActivityLogsService independentActivityLogsService { get; set; }
 
         public List<ActivityLogsDTO> activityLogs { get; private set; } = new List<ActivityLogsDTO>();
         public ActivityLogsDTO activityLogsDTO { get; set; } = new ActivityLogsDTO();
+        public bool isLoading = false;
 
         public int Index = -1;
         public ChartOptions Options = new ChartOptions();
@@ -20,9 +22,14 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminDashboard
 
         protected override async Task OnInitializedAsync()
         {
+            isLoading = true;
             try
             {
                 var response = await activityLogsService.GetAllActivityLogs();
+                if (response != null)
+                {
+                    await independentActivityLogsService.LogAdminAction("Viewed Dashboard");
+                }
                 activityLogs = response?.ToList() ?? new List<ActivityLogsDTO>();
 
                 if (response == null)
@@ -33,15 +40,24 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminDashboard
                 {
                     activityLogs = response.ToList();
                 }
+
+                isLoading = false;
             }
             catch (Exception ex)
             {
                 snackbar.Add($"Exception Error: {ex.Message}", Severity.Error);
                 navigationManager.NavigateTo("/home");
+                isLoading = false;
             }
 
             StateHasChanged();
         }
+
+
+
+        public MudDateRangePicker dateRangePickerRef;
+        public PickerVariant variant = PickerVariant.Static;
+        public DateRange dateRange = new(DateTime.Now.AddDays(-7), DateTime.Now);
 
 
         public List<ChartSeries> Series = new List<ChartSeries>()

@@ -3,7 +3,6 @@
 @inherits AccountBase
 @attribute [Authorize(Roles = "Admin")]
 
-
 <MudGrid Justify="Justify.Center">
     <MudText Class="mt-20 pt-10 fw-bolder" Style="color: white" Typo="Typo.h4">Manage Accounts</MudText>
 
@@ -15,25 +14,25 @@
 
             <MudContainer Class="px-4 mt-4">
                 <MudForm @ref="form" Validated="OnValidated">
-                    <MudTextField T="string" Label="Name" @bind-Value="register.Name" Required="true" />
-                    <MudSelect T="string" Label="Gender" @bind-Value="register.Gender" Required="true">
-                        <MudSelectItem Value="@("Male")">Male</MudSelectItem>
+                    <MudTextField T="string" Label="Name" @bind-Value="adminRegister.Name" Required="true" />
+                    <MudSelect T="string" Label="Gender" @bind-Value="adminRegister.Gender" Required="true">
+                        <MudSelectItem Value=@("Male")>Male</MudSelectItem>
                         <MudSelectItem Value="@("Female")">Female</MudSelectItem>
-                        <MudSelectItem Value="@("Other")">Other</MudSelectItem>
+                        <MudSelectItem Value=@("Other")>Other</MudSelectItem>
                     </MudSelect>
-                    <MudTextField T="int" Label="Age" @bind-Value="register.Age" MaxLength="3" Required="true" />
-                    <MudTextField T="string" Label="Email" @bind-Value="register.Email" Required="true" />
-                    <MudTextField T="string" Label="Password" @bind-Value="register.Password"
+                    <MudTextField T="int" Label="Age" @bind-Value="adminRegister.Age" MaxLength="3" Required="true" />
+                    <MudTextField T="string" Label="Email" @bind-Value="adminRegister.Email" Required="true" />
+                    <MudTextField T="string" Label="Password" @bind-Value="adminRegister.Password"
                                   InputType="@showPassword.InputType"
                                   Required="true" />
-                    <MudTextField T="string" Label="Confirm Password" @bind-Value="register.ConfirmPassword"
+                    <MudTextField T="string" Label="Confirm Password" @bind-Value="adminRegister.ConfirmPassword"
                                   Adornment="Adornment.End"
                                   AdornmentIcon="@showPassword.Icon"
                                   OnAdornmentClick="ShowPassword"
                                   AdornmentAriaLabel="Toggle Password Visibility"
                                   InputType="@showPassword.InputType" Required="true" />
 
-                    <MudButton Class="mt-15" Style="height: 50px; background-color:  rgb(133,15,225); color:white"
+                    <MudButton Class="mt-15" Style="height: 50px; background-color: rgb(133,15,225); color:white"
                                Variant="Variant.Filled" Disabled="@isLoading" OnClick="RegisterOnClick">
                         Register
                     </MudButton>
@@ -59,7 +58,7 @@
                         <MudTd>@context.Age</MudTd>
                         <MudTd>@context.DateJoined.ToString("yyyy-MM-dd")</MudTd>
                         <MudTh>
-                            <MudIconButton Icon="@Icons.Material.Filled.PersonRemoveAlt1" Color="Color.Success" OnClick="() => RemoveAccount(context.Email)" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Remove" Color="Color.Success" OnClick="() => RemoveAccount(context.Email)" />
                         </MudTh>
                     </RowTemplate>
                 </MudTable>

@@ -17,6 +17,7 @@ builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IRatingsService, RatingsService>();
 builder.Services.AddScoped<IClipboardService, ClipboardService>();
 builder.Services.AddScoped<IActivityLogsService, ActivityLogsService>();
+builder.Services.AddScoped<IIndependentActivityLogsService, IndependentActivityLogsService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 builder.Services.AddScoped<CustomAuthStateProvider>();
 builder.Services.AddAuthorizationCore();
@@ -33,6 +34,5 @@ builder.Services.AddOidcAuthentication(options =>
 
 builder.Services.AddMudServices();
 builder.Services.AddOptions();
-
 
 await builder.Build().RunAsync();

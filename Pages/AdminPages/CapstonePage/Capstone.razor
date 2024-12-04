@@ -4,12 +4,6 @@
 @attribute [Authorize(Roles = "Admin")]
 
 
-@if (isLoading)
-{
-    <Loader/>
-}
-else
-{
     <MudGrid Class="mt-20 pt-10" Justify="Justify.Center">
             <MudPaper Class="ms-15" Elevation="20">
                 <MudButton Class="fs-5 fw-bold" Style="color: white;" OnClick="() => AddCapstone()">
@@ -47,4 +41,3 @@ else
                 </MudTable>
             </MudPaper> 
     </MudGrid>
-}

@@ -12,7 +12,6 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
     {
         private readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Large, FullWidth = true, NoHeader = true };
 
-        [Inject] public HttpClient httpClient { get; set; }
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public ILocalStorageService LocalStorage { get; set; }
         [Inject] public ISnackbar Snackbar { get; set; }
@@ -40,13 +39,13 @@ namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
             {
                 isLoading = false;
 
-                var fetchadmin = await AdminService.GetAdminByEmail(login.Email);
+                var fetchAdmin = await AdminService.GetAdminByEmail(login.Email);
 
                 adminLogs = new ActivityLogsDTO
                 {
-                    AdminId = fetchadmin.AdminId,
-                    Email = fetchadmin.Email,
-                    Name = fetchadmin.Name,
+                    AdminId = fetchAdmin.AdminId,
+                    Email = fetchAdmin.Email,
+                    Name = fetchAdmin.Name,
                     Action = "Logged In",
                     Details = "Admin Successfully Logged In",
                     Timestamp = DateTime.UtcNow

@@ -13,7 +13,7 @@ namespace CapstoneIdeaGenerator.Client.Models.DTOs
         [Required]
         public int Age { get; set; }
 
-        public DateTime DateJoined { get; set; }
+        public DateTime DateJoined { get; set; } = DateTime.UtcNow;
 
         [Required]
         public string Email { get; set; } = string.Empty;

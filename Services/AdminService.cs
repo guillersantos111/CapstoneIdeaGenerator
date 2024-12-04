@@ -45,12 +45,41 @@ namespace CapstoneIdeaGenerator.Client.Services
 
 
 
-        public async Task<bool> RegisterAsync(AdminRegisterDTO request)
+        public async Task<AdminDTO> Register(AdminRegisterDTO request)
         {
-            var response = await httpClient.PostAsJsonAsync("/api/Admin/register", request);
-            return response.IsSuccessStatusCode;
+            try
+            {
+                var response = await httpClient.PostAsJsonAsync("/api/Admin/register", request);
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadFromJsonAsync<AdminDTO>();
+                }
+                else
+                {
+                    throw new Exception(await response.Content.ReadAsStringAsync());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
+
+        public async Task RemoveAdmin(string email)
+        {
+            try
+            {
+                var response = await httpClient.DeleteAsync($"/api/Admin/remove/{email}");
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error removing admin: {ex.Message}");
+                throw;
+            }
+        }
+        
 
         public async Task<AdminGetByEmailDTO?> GetAdminByEmail(string email)
         {
@@ -105,40 +134,6 @@ namespace CapstoneIdeaGenerator.Client.Services
             {
                 throw new Exception("An Error Occurred: " + ex.Message);
             }
-        }
-
-
-        public async Task<AdminDTO> EditAdminAsync(string email, AdminEditAccountDTO updatedAdmin)
-        {
-            try
-            {
-                var response = await httpClient.PutAsJsonAsync($"/api/Admin/edit/{email}", updatedAdmin);
-                response.EnsureSuccessStatusCode();
-                return await response.Content.ReadFromJsonAsync<AdminDTO>();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error editing admin: {ex.Message}");
-            }
-        }
-
-        public async Task RemoveAdminAsync(string email)
-        {
-            try
-            {
-                var response = await httpClient.DeleteAsync($"/api/Admin/remove/{email}");
-                response.EnsureSuccessStatusCode();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error removing admin: {ex.Message}");
-            }
-        }
-
-
-        public async Task<string> GetAdminNameAsync()
-        {
-            return await httpClient.GetFromJsonAsync<string>("/api/Admin");
         }
 
 

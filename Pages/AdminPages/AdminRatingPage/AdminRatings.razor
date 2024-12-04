@@ -4,16 +4,10 @@
 @attribute [Authorize(Roles = "Admin")]
 
 
-@if (isLoading)
-{
-    <Loader></Loader>
-}
-else
-{
-    <MudGrid Class="mt-20 pt-10" Justify="Justify.Center">
+    <MudGrid Class="mt-20 pt-10 ms-1" Justify="Justify.Center">
         <MudContainer>
             <MudText Style="color: white; font-weight: bold; font-size: 30px">Rating View</MudText>
-            <MudTable Items="Ratings" Striped="true" Hover="true" Height="700px" Style="width: 100%" FixedHeader="true" Class="table-responsive-sm">
+            <MudTable Items="Ratings" Striped="true" Hover="true" Height="100%" Style="width: 100%" FixedHeader="true" Class="table-responsive">
                 <HeaderContent>
                     <MudTh>Rating ID</MudTh>
                     <MudTh>Capstone ID</MudTh>
@@ -35,4 +29,3 @@ else
             </MudTable>
         </MudContainer>
     </MudGrid>
-}

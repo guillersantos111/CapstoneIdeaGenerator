@@ -13,6 +13,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
         [Inject] IRatingsService RatingsService { get; set; }
         [Inject] ISnackbar Snackbar { get; set; }
         [Inject] NavigationManager NavigationManager { get; set; }
+        [Inject] IIndependentActivityLogsService independentActivityLogsService { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -26,6 +27,11 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
                 isLoading = true;
                 var response = await RatingsService.GetAllRatingsDetailes();
                 Ratings = response?.ToList() ?? new List<RatingsDTO>();
+
+                if (response != null)
+                {
+                    await independentActivityLogsService.LogAdminAction("Viewed Ratings");
+                }
 
                 if (response == null)
                 {

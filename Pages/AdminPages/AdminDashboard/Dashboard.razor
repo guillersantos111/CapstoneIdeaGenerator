@@ -4,43 +4,44 @@
 @attribute [Authorize(Roles = "Admin")]
 
 <MudGrid Class="mt-10 pt-20" Justify="Justify.Center">
-    <MudItem Class="col-lg-12 row gap-20 justify-content-center">
-        <MudPaper Class="col-lg-8" Style="height: 350px; width: 510px" Elevation="20">
+    <MudItem Class="col-lg-12 row gap-4 justify-content-center">
+        <MudPaper Class="col-lg-4" Style="height: 400px; width: 510px" Elevation="20">
             <MudContainer Class="text-center">
-                <MudText Class="mt-5 fs-4">Analytics Overview</MudText>
+                <MudText Class="mt-5 fs-4 fw-bolder">Analytics Overview</MudText>
             </MudContainer>
 
             <MudContainer Class="text-center">
                 <MudChart ChartType="ChartType.Line" ChartSeries="@Series" @bind-SelectedIndex="Index" XAxisLabels="@XAxisLabels" Width="100%" Height="300px" ChartOptions="@Options" />
+                <MudSlider @bind-Value="Options.LineStrokeWidth" Min="1" Max="10" Color="Color.Info">@Options.LineStrokeWidth.ToString()</MudSlider>
             </MudContainer>
-
-            <MudGrid Class="justify-content-center">
-                <MudItem xs="6">
-                    <MudText Typo="Typo.body1" Class="py-3">Selected: @(Index < 0 ? "None" : Series[Index].Name)</MudText>
-                </MudItem>
-                <MudItem xs="6">
-                    <MudSlider @bind-Value="Options.LineStrokeWidth" Min="1" Max="10" Color="Color.Info">Line Width: @Options.LineStrokeWidth.ToString()</MudSlider>
-                </MudItem>
-            </MudGrid>
         </MudPaper>
 
-        <MudPaper Class="col-lg-4" Style="height: 710px; width: 420px" Elevation="20">
+        <MudPaper Class="col-lg-4" Style="height: 400px; width: 630px" Elevation="20">
+            <MudStack AlignItems="AlignItems.Center" Style="width: 100%; height: 390px">
+                <MudDateRangePicker @ref="dateRangePickerRef" PickerVariant="variant" @bind-DateRange="@dateRange" Margin="Margin.Dense" />
+            </MudStack>
+        </MudPaper>
+
+        <MudPaper Class="col-lg-4 mt-10 ms-6" Style="height: 280px; width: 100%" Elevation="20">
             <MudContainer Class="text-center">
-                <MudText Class="mt-5 fs-4">Activity Logs</MudText>
+                <MudText Class="mt-5 fs-6 fw-bolder">Activity Logs</MudText>
             </MudContainer>
 
-            <MudTable Class="table-responsive-sm" Style="width: 400px" Elevation="20" Height="600px" Items="activityLogs" Striped="true" Hover="true" FixedHeader="true">
+            <MudTable Class="logs-table" Style="width: 100%;" Dense="true" Elevation="20" Height="230px" Items="activityLogs" Striped="true" Hover="true" FixedHeader="true">
                 <HeaderContent>
+                    <MudTh>Admin Id</MudTh>
                     <MudTh>Actions</MudTh>
                     <MudTh>Details</MudTh>
                     <MudTh>Timestamps</MudTh>
                 </HeaderContent>
                 <RowTemplate>
+                    <MudTd>@context.AdminId</MudTd>
                     <MudTd>@context.Action</MudTd>
                     <MudTd>@context.Details</MudTd>
                     <MudTd>@context.Timestamp</MudTd>
                 </RowTemplate>
             </MudTable>
+
         </MudPaper>
     </MudItem>
 </MudGrid>

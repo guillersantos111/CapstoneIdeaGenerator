@@ -9,17 +9,17 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
 {
     public class AccountBase : ComponentBase
     {
-        [Inject] IActivityLogsService activityLogsService { get; set; }
         [Inject] IAdminService adminService { get; set; }
         [Inject] IDialogService dialogService { get; set; }
-        [Inject] ISnackbar snackbar { get; set; }
+        [Inject] ISnackbar Snackbar { get; set; }
         [Inject] NavigationManager navigationManager { get; set; }
+        [Inject] IIndependentActivityLogsService IndependentActivityLogsService { get; set; }
 
         public ICollection<AdminAccountDTO> Admins { get; set; } = new List<AdminAccountDTO>();
-        public static AdminRegisterDTO register = new AdminRegisterDTO();
+        public static AdminRegisterDTO adminRegister = new AdminRegisterDTO();
+        public AdminDTO admin;
         public ActivityLogsDTO adminLogs = new ActivityLogsDTO();
         public AdminLoginDTO adminLoggedIn = new AdminLoginDTO();
-        public List<AdminAccountDTO> accounts = new List<AdminAccountDTO>();
         public ShowPasswordUtil showPassword { get; set; } = new ShowPasswordUtil();
         public MudForm form;
         public string message = string.Empty;
@@ -37,9 +37,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
                 var response = await adminService.GetAllAccountsAsync();
                 Admins = response?.ToList() ?? new List<AdminAccountDTO>();
 
-                if (response == null)
+                if (response == null || !Admins.Any())
                 {
-                    snackbar.Add("No Account Found", Severity.Warning);
+                    Snackbar.Add("No Account Found", Severity.Warning);
                 }
                 else
                 {
@@ -48,50 +48,56 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
             }
             catch (Exception ex)
             {
-                snackbar.Add($"Exception Error: {ex.Message}", Severity.Error);
+                Snackbar.Add($"Exception Error: {ex.Message}", Severity.Error);
                 navigationManager.NavigateTo("/home");
             }
-
-            StateHasChanged();
         }
 
         public async Task RegisterOnClick()
         {
-            isLoading = true;
-            var response = await adminService.RegisterAsync(register);
-            if (response)
+            try
             {
-                isLoading = false;
-
-                snackbar.Add("Successfully Created Admin Account", Severity.Success);
+                admin = await adminService.Register(adminRegister);
+                Snackbar.Add("Successfully Created Admin Account", Severity.Success);
+                await IndependentActivityLogsService.LogAdminAction("Created Account");
+                await LoadAccounts();
             }
-            else
+            catch (Exception ex)
             {
-                snackbar.Add("Failed Registrating Admin Account", Severity.Error);
-            }
+                string errorMessage = ex.Message;
 
-            await LoadAccounts();
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $" - {ex.InnerException.Message}";
+                }
+
+                Snackbar.Add(errorMessage, Severity.Error);
+            }
         }
 
 
-
-        public async Task EditAdmin(string email)
+        public async Task RemoveAccount(string email)
         {
+            try
+            {
+                bool? confirm = await dialogService.ShowMessageBox("Delete Confirmation", "Are You Sure You Want To Delete This Account?", yesText: "Delete", cancelText: "Cancel");
+                if (confirm == true)
+                {
+                    await adminService.RemoveAdmin(email);
+                    Snackbar.Add("Account Removed Successfully", Severity.Success);
+                    await IndependentActivityLogsService.LogAdminAction("Remove Account");
+                    await LoadAccounts();
 
+                    await OnInitializedAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error removing admin: {ex.Message}");
+                Snackbar.Add($"Error removing admin: {ex.Message}", Severity.Error);
+            }
         }
 
-
-       public async Task RemoveAccount(string email)
-       {
-          bool? confirm = await dialogService.ShowMessageBox("Delete Confirmation", "Are you sure you want to delete this Account?", yesText: "Delete", cancelText: "Cancel");
-
-           if (confirm == true)
-           {
-               await adminService.RemoveAdminAsync(email);
-               snackbar.Add("Account Remove Successfully", Severity.Success);
-               await LoadAccounts();
-           }
-       }
 
         public void ShowPassword()
         {
