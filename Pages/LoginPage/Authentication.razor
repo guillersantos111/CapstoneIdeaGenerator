@@ -18,7 +18,7 @@ else
                         <MudContainer>
                             <MudCard Class="mt-20 pt-10" Elevation="10">
                                 <MudCardContent>
-                                    <MudText Style="font-weight: bolder; margin: 4px;" Typo="Typo.h5">Login</MudText>
+                                    <MudText Style="font-weight: bolder; margin: 4px;" Typo="Typo.h5">Admin Login</MudText>
 
                                     <MudTextField Class="mb-5" T="string" Label="Username" @bind-Value="login.Email" Variant="Variant.Outlined" FullWidth
                                                   For="@(() => login.Email)" InputType="InputType.Text" />
@@ -39,11 +39,8 @@ else
                     </MudPaper>
                 </MudContainer>
 
-                <MudContainer Class="mt-20 pt-20">
-                    <MudText Style="color:white; font-weight: bolder;" Typo="Typo.h4">
-                        Capstone Shared Ideas Generator Admin Login
-                    </MudText>
-                    <MudImage Src="Login.png" Style="width: 550px; height: 550px; background-color: transparent;"></MudImage>
+                <MudContainer Class="d-none d-md-flex mt-20 pt-20">
+                    <MudImage Src="Images/AdminLogin.svg" Style="width: 550px; height: 550px; background-color: transparent;"></MudImage>
                 </MudContainer>
             </MudContainer>
         </MudContainer>

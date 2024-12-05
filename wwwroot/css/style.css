@@ -2,13 +2,18 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
 
-
- /*---------------------------------------------------------------------------------------------------*/
-
-
+/*---------------------------------------------------------------------------------------------------*/
 
 .btn-nextIdea {
     color: white !important;
@@ -19,26 +24,16 @@ html, body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-        .btn-nextIdea:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-        }
+    .btn-nextIdea:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
 
-        .btn-nextIdea:active {
-            transform: translateY(1px);
-        }
-
-
+    .btn-nextIdea:active {
+        transform: translateY(1px);
+    }
 
 /*---------------------------------------------------------------------------------------------------*/
-
-}
-
-
-
-/*---------------------------------------------------------------------------------------------------*/
-
-
 
 .btn-appbar-menu {
     padding: 15px 30px;
@@ -51,7 +46,6 @@ html, body {
     transition: all 0.3s ease;
     height: 40px;
     width: 100px;
-    color: azure;
 }
 
     .btn-appbar-menu:hover {
@@ -60,7 +54,7 @@ html, body {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     }
 
-
+/*---------------------------------------------------------------------------------------------------*/
 
 .btn-generate {
     color: white !important;
@@ -78,51 +72,116 @@ html, body {
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
     }
 
-btn-generate:active {
-    transform: translateY(1px) !important;
+/*---------------------------------------------------------------------------------------------------*/
+
+.animated-icon {
+    animation: move-up-down 1.5s ease-in-out infinite, color-change 5s linear infinite;
+    will-change: transform, stroke;
 }
 
-    .animated-icon {
-        animation: move-up-down 1.5s ease-in-out infinite, color-change 5s linear infinite;
-        will-change: transform, stroke;
+@keyframes move-up-down {
+    0%, 100% {
+        transform: translateY(0);
     }
 
-    @keyframes move-up-down {
-        0%, 100% {
-            transform: translateY(0);
-        }
+    50% {
+        transform: translateY(-3px);
+    }
+}
 
-        50% {
-            transform: translateY(-3px);
-        }
+@keyframes color-change {
+    0% {
+        stroke: #ff0000;
     }
 
-    @keyframes color-change {
-        0% {
-            stroke: #ff0000;
-        }
-
-        16% {
-            stroke: #ff7f00;
-        }
-
-        33% {
-            stroke: #ffff00;
-        }
-
-        50% {
-            stroke: #00ff00;
-        }
-
-        66% {
-            stroke: #0000ff;
-        }
-
-        83% {
-            stroke: #4b0082;
-        }
-
-        100% {
-            stroke: #9400d3;
-        }
+    16% {
+        stroke: #ff7f00;
     }
+
+    33% {
+        stroke: #ffff00;
+    }
+
+    50% {
+        stroke: #00ff00;
+    }
+
+    66% {
+        stroke: #0000ff;
+    }
+
+    83% {
+        stroke: #4b0082;
+    }
+
+    100% {
+        stroke: #9400d3;
+    }
+}
+
+/*---------------------------------------------------------------------------------------------------*/
+
+@media (max-width: 768px) {
+    .responsive-text {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        font-size: 1.8rem !important;
+    }
+
+    .responsive-header {
+        font-size: 2rem !important;
+    }
+
+    .responsive-subtext {
+        font-size: 1.1rem !important;
+    }
+
+    .responsive-image {
+        max-width: 100% !important;
+        width: auto !important;
+        position: relative !important; 
+        margin: 10px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .responsive-header {
+        font-size: 2.5rem !important;
+    }
+
+    .responsive-subtext {
+        font-size: 1.5rem !important;
+    }
+
+
+    .responsive-image {
+        max-width: 100% !important;
+        margin: 15px !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .responsive-text {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        font-size: 2rem !important;
+    }
+
+    .responsive-header {
+        font-size: 3.5rem !important;
+    }
+
+    .responsive-subtext {
+        font-size: 1.75rem !important;
+    }
+
+    .responsive-image {
+        max-width: 100% !important;
+        margin: 20px !important;
+    }
+
+    .table-full-width {
+        width: 100%;
+        overflow-x: auto;
+    }
+}

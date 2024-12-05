@@ -1,20 +1,18 @@
 ﻿@page "/home"
 @layout UserLayout
 
-
-
 <MudLayout>
     <MudContainer>
-        <MudContainer Class="position-absolute start-0 top-0 mt-20 pt-20 ms-5" Style="color: white;">
-            <MudText Typo="Typo.h2" Class="fw-bolder">
+        <MudContainer Class="position-absolute start-0 top-0 pt-20 ms-5 responsive-text">
+            <MudText Typo="Typo.h2" Class="fw-bolder responsive-header">
                 WELCOME <br />
                 TO CAPSTONE <br />
                 SHARED IDEAS GENERATOR
             </MudText>
-            <MudText Class="fs-2 mt-5">
+            <MudText Class="fs-2 mt-5 responsive-subtext">
                 Generate innovative capstone concepts instantly.
             </MudText>
-            <MudContainer Class="">
+            <MudContainer>
                 <MudButton Class="btn-generate" Href="/generator">
                     GENERATE HERE!
                     <div class="moving-icon-container m-3">
@@ -34,14 +32,8 @@
         </MudContainer>
     </MudContainer>
 
-    <MudContainer>
-        <MudImage Class="position-absolute top-0 end-0 mt-15 pt-15 me-5" Style="width: 750px; height: 850px; background-color: transparent;" Src="Device.gif"></MudImage>
+    <MudContainer Class="d-none d-md-flex">
+        <MudImage Style="height: 600px; width: 600px" Src="Images/Programmer-amico.svg" Class="responsive-image position-absolute top-0 end-0 mt-20 pt-20 me-1">
+        </MudImage>
     </MudContainer>
 </MudLayout>
-
-
-@code {
-
-}
-
-

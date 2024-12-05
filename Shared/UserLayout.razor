@@ -9,24 +9,25 @@
 <MudGrid Justify="Justify.Center">
     <MudContainer>
         <MudAppBar Style="background-color: rgb(133,15,225); z-index: 100" Elevation="20">
-            <MudContainer Class="d-none d-lg-flex justify-content-start">
+
+            <MudContainer Class="d-none d-md-flex justify-content-start">
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Href="/home">Home</MudButton>
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Href="/about">About</MudButton>
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/generator">Generator</MudButton>
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 100px; color: white" Href="/ratings">Ratings</MudButton>
             </MudContainer>
 
-            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="@ToggleDrawer" Edge="Edge.End" Class="d-lg-none" />
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" OnClick="@ToggleDrawer" Edge="Edge.End" Class="d-md-none" />
 
-            <MudContainer Class="d-none d-lg-flex justify-content-end">
+            <MudContainer Class="d-none d-md-flex justify-content-end">
                 <MudButton Class="btn-appbar-menu m-3" Style="height: 40px; width: 50px; color: white" Color="Color.Info" Variant="Variant.Outlined" Href="/authentication">Login</MudButton>
             </MudContainer>
         </MudAppBar>
 
-
-        <MudDrawer Breakpoint="Breakpoint.None" Class="d-lg-none" @bind-Open="drawerOpen" Color="Color.Dark" ClipMode="DrawerClipMode.Never" Anchor="Anchor.Right" Elevation="3">
+        <MudDrawer Breakpoint="Breakpoint.None" Class="d-md-none" @bind-Open="drawerOpen" Color="Color.Dark" ClipMode="DrawerClipMode.Never" Anchor="Anchor.Right" Elevation="3">
             <MudContainer Class="d-grid gap-5">
                 <MudContainer Class="d-grid row-cols-8 pt-5 ms-6">
+                    <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/home">Home</MudButton>
                     <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/authentication">Login</MudButton>
                     <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/about">About</MudButton>
                     <MudButton Class="btn-appbar-menu m-2" Style="color: white" Href="/generator">Generator</MudButton>
@@ -40,36 +41,11 @@
             </MudContainer>
         </MudDrawer>
     </MudContainer>
+
     <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="pt-8">
         @Body
     </MudContainer>
-
-    <MudContainer Style="background-color: transparent; position: absolute; bottom: 0; left: 0; width: 100%;">
-        <MudContainer Class="d-flex gap-4">
-            <MudText Style="font-size: 8px; font-weight: bolder; color: white;">
-                <MudImage Src="icons8-bootstrap-48.png" Style="height: 19px; width: 19px;" />
-                Bootstrap
-            </MudText>
-
-            <MudText Style="color: limegreen; font-size: 13px; font-weight: bolder">C#</MudText>
-
-            <MudText Style="font-size: 8px; font-weight: bolder; color: white;">
-                <MudIcon Icon="@Icons.Custom.Brands.MudBlazor" Color="Color.Primary" Style="height:18px; width: 18px;" />MudBlazor
-            </MudText>
-
-            <MudText Style="font-size: 8px; font-weight: bolder; color: white;">
-                <MudIcon Icon="@Icons.Custom.Brands.Microsoft" Color="Color.Success" Style="height:18px; width: 18px;" />.NET
-            </MudText>
-        </MudContainer>
-        <MudContainer>
-            <MudText Class="position-absolute bottom-0 end-0 me-3" Style="font-size: 8px; font-weight: bolder;">
-                Developed By: Guiller Santos
-            </MudText>
-        </MudContainer>
-    </MudContainer>
 </MudGrid>
-
-
 
 @code {
     private bool drawerOpen = false;
