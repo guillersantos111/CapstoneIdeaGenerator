@@ -4,11 +4,15 @@ using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using CapstoneIdeaGenerator.Client.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using CapstoneIdeaGenerator.Client.Services;
 
 namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
 {
     public class CapstoneBase : ComponentBase
     {
+        public bool isLoading { get; set; } = false;
+        public string SearchQuery { get; set; } = string.Empty;
+        public IEnumerable<CapstonesDTO> FilteredCapstones { get; set; } = new List<CapstonesDTO>();
         public ICollection<CapstonesDTO> Capstones { get; private set; } = new List<CapstonesDTO>();
         private readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, NoHeader = true };
 
@@ -17,7 +21,6 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
         [Inject] ISnackbar Snackbar { get; set; }
         [Inject] NavigationManager NavigationManager { get; set; }
         [Inject] IIndependentActivityLogsService IndependentActivityLogsService { get; set; }
-        public bool isLoading { get; set; } = false;
 
         protected override async Task OnInitializedAsync()
         {
@@ -29,18 +32,8 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
             try
             {
                 isLoading = true;
-                var response = await CapstoneService.GetAllCapstones();
-                Capstones = response?.ToList() ?? new List<CapstonesDTO>();
-
-                if (response == null)
-                {
-                    Snackbar.Add("No Capstones Found", Severity.Warning);
-                }
-                else
-                {
-                    Capstones = response.ToList();
-                    isLoading = false;
-                }
+                Capstones = (await CapstoneService.GetAllCapstones())?.ToList() ?? new List<CapstonesDTO>();
+                FilteredCapstones = Capstones.ToList();
             }
             catch (Exception ex)
             {
@@ -48,7 +41,31 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.CapstonePage
                 NavigationManager.NavigateTo("/home");
             }
 
+            isLoading = false;
             StateHasChanged();
+        }
+
+
+        public async Task SearchCapstones(string query)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(query))
+                {
+                    var filteredResults = await CapstoneService.GetFilteredCapstones(query);
+                    FilteredCapstones = filteredResults?.ToList() ?? new List<CapstonesDTO>();
+                }
+                else
+                {
+                    FilteredCapstones = Capstones.ToList();
+                }
+
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Snackbar.Add($"Error Seatching Capstones: {ex.Message}", Severity.Error);
+            }
         }
 
 

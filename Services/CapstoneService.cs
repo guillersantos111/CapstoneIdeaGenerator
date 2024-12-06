@@ -26,6 +26,20 @@ namespace CapstoneIdeaGenerator.Client.Services
             }
         }
 
+
+        public async Task<IEnumerable<CapstonesDTO>> GetFilteredCapstones(string query)
+        {
+            try
+            {
+                return await httpClient.GetFromJsonAsync<IEnumerable<CapstonesDTO>>($"/api/Capstone/filter?query={query}");
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error Searching Capstones: {ex.Message}");
+                return new List<CapstonesDTO>();
+            }
+        }
+
         public async Task<CapstonesDTO> GetCapstoneById(int id)
         {
             try
