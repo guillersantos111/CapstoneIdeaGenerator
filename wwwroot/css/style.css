@@ -15,6 +15,18 @@ html, body {
 
 /*---------------------------------------------------------------------------------------------------*/
 
+
+
+.search-history-dropdown {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    margin-top: 5px;
+}
+
+
+/*---------------------------------------------------------------------------------------------------*/
+
 .btn-nextIdea {
     color: white !important;
     background-color: rgb(22, 162, 73) !important;

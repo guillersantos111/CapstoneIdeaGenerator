@@ -10,10 +10,13 @@
             Add New Capstone
         </MudButton>
         <MudContainer Class="d-flex gap-4 w-auto">
-            <MudTextField @bind-Value="SearchQuery" Label="Search Capstones" Variant="Variant.Outlined"
-                          Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search"
-                          AdornmentColor="Color.Primary" Immediate="true"
-                          oninput="async (e) => await SearchCapstones(SearchQuery)"
+            <MudTextField @bind-Value="SearchQuery"
+                          Label="Search Capstones"
+                          Variant="Variant.Outlined"
+                          Adornment="Adornment.End"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          AdornmentColor="Color.Primary"
+                          Immediate="true"
                           Placeholder="Search" />
 
             <MudButton Class="mt-2" Style="height: 55px; width: 250px" OnClick="() => SearchCapstones(SearchQuery)" Color="Color.Primary" Variant="Variant.Filled">
@@ -21,7 +24,7 @@
             </MudButton>
         </MudContainer>
 
-        <MudTable Items="FilteredCapstones" Striped="true" Hover="true" Style="width: 100%;" FixedHeader="true">
+        <MudTable Items="FilteredCapstones" Striped="true" Hover="true" Height="740px" Style="width: 100%;" FixedHeader="true">
             <HeaderContent>
                 <MudTh>Titles</MudTh>
                 <MudTh>Descriptions</MudTh>
