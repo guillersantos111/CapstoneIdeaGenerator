@@ -13,23 +13,12 @@ html, body {
     box-sizing: inherit;
 }
 
-/*---------------------------------------------------------------------------------------------------*/
-
-
-
-.search-history-dropdown {
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    margin-top: 5px;
-}
-
 
 /*---------------------------------------------------------------------------------------------------*/
 
 .btn-nextIdea {
     color: white !important;
-    background-color: rgb(22, 162, 73) !important;
+    background-color: #9400d3 !important;
     height: 45px;
     width: 110px;
     border-radius: 5px;
@@ -37,8 +26,8 @@ html, body {
 }
 
     .btn-nextIdea:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4) !important;
     }
 
     .btn-nextIdea:active {
@@ -70,8 +59,8 @@ html, body {
 
 .btn-generate {
     color: white !important;
+    background-color: #9400d3 !important;
     border-radius: 5px;
-    background-color: rgba(22, 162, 73) !important;
     height: 50px !important;
     width: 300px !important;
     margin-top: 50px !important;
@@ -81,7 +70,7 @@ html, body {
 
     .btn-generate:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4) !important;
     }
 
 /*---------------------------------------------------------------------------------------------------*/

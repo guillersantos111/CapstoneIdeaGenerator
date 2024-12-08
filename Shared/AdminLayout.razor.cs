@@ -1,5 +1,5 @@
 ﻿using CapstoneIdeaGenerator.Client.Models.DTOs;
-using CapstoneIdeaGenerator.Client.Pages.LoginPage;
+using CapstoneIdeaGenerator.Client.Pages.AdminPages.LoginPage;
 using CapstoneIdeaGenerator.Client.Services.Contracts;
 using Microsoft.AspNetCore.Components;
 

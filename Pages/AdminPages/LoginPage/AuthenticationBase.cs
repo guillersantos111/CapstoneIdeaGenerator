@@ -6,7 +6,7 @@ using CapstoneIdeaGenerator.Client.Utilities;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace CapstoneIdeaGenerator.Client.Pages.LoginPage
+namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.LoginPage
 {
     public class AuthenticationBase : ComponentBase
     {
