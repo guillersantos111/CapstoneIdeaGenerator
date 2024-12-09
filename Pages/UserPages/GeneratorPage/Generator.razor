@@ -65,24 +65,24 @@ else
                 {
                     <MudContainer Class="mt-5">
                         <MudContainer>
-                            <MudText Class="mb-3 fw-bolder" Style="color: white;" Typo="Typo.h5">@generatedCapstone?.Title</MudText>
-                            <MudText Class="text-opacity-25 fs-6 mb-2 mt-5" Style="color: darkgray;">@generatedCapstone?.Description</MudText>
+                            <MudText Class="slide-down mb-3 fw-bolder" Style="color: white;" Typo="Typo.h5">@generatedCapstone?.Title</MudText>
+                            <MudText Class="slide-down text-opacity-25 fs-6 mb-2 mt-5" Style="color: darkgray;">@generatedCapstone?.Description</MudText>
                         </MudContainer>
                     </MudContainer>
 
                     <MudContainer Class="mt-10 mb-5">
                         <MudContainer Class="d-flex d-md-flex" Style="color: White;">
-                            <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: forestgreen; border-radius: 50px; margin: 7px">@generatedCapstone?.ProgLanguages</MudText>
-                            <MudText Style="height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: forestgreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Databases</MudText>
-                            <MudText Style="height: 20px; min-width: 120px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: forestgreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Frameworks</MudText>
+                            <MudText Style="slide-down height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: forestgreen; border-radius: 50px; margin: 7px">@generatedCapstone?.ProgLanguages</MudText>
+                            <MudText Style="slide-down height: 20px; min-width: 100px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: forestgreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Databases</MudText>
+                            <MudText Style="slide-down height: 20px; min-width: 120px; max-width: 100%; font-size: 15px; font-weight: bolder; text-align: center; background-color: forestgreen; border-radius: 50px; margin: 7px">@generatedCapstone?.Frameworks</MudText>
                         </MudContainer>
                     </MudContainer>
 
                     <MudContainer Class="mt-10 ms-8">
-                        <MudText Typo="Typo.h6" Class="fw-bold" Style="color: white;">Rate this Capstone Idea</MudText>
-                        <MudRating @bind-SelectedValue="Rating.RatingValue" Size="Size.Large" Class="mt-2 ms-5" />
+                        <MudText Typo="Typo.h6" Class="slide-down fw-bold" Style="color: white;">Rate this Capstone Idea</MudText>
+                        <MudRating Class="slide-down mt-2 ms-5" @bind-SelectedValue="Rating.RatingValue" Size="Size.Large" />
                         <MudContainer>
-                            <MudButton OnClick="SubmitRating" Variant="Variant.Outlined" Color="Color.Success" Class="mt-2 ms-4">
+                            <MudButton Class="slide-down mt-2 ms-4" OnClick="SubmitRating" Variant="Variant.Outlined" Color="Color.Success">
                                 Submit Rating
                             </MudButton>
                         </MudContainer>

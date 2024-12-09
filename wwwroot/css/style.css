@@ -75,6 +75,27 @@ html, body {
 
 /*---------------------------------------------------------------------------------------------------*/
 
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%) !important;
+        opacity: 0 !important;
+    }
+    100% {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+}
+
+.slide-down {
+    animation: slideDown 0.5s ease-out !important;
+    animation-fill-mode: forwards !important;
+    opacity: 0 !important;
+}
+
+
+/*---------------------------------------------------------------------------------------------------*/
+
+
 .animated-icon {
     animation: move-up-down 1.5s ease-in-out infinite, color-change 5s linear infinite;
     will-change: transform, stroke;
