@@ -12,14 +12,11 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.LoginPage
     {
         private readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Large, FullWidth = true, NoHeader = true };
 
-        [Inject] public NavigationManager NavigationManager { get; set; }
-        [Inject] public ILocalStorageService LocalStorage { get; set; }
-        [Inject] public ISnackbar Snackbar { get; set; }
-        [Inject] public IDialogService DialogService { get; set; }
-        [Inject] public IAdminService AdminService { get; set; }
-        [Inject] public IActivityLogsService ActivityLogsService { get; set; }
-        [Inject] public CustomAuthStateProvider CustomAuthStateProvider { get; set; }
-        [Inject] public AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [Inject] public NavigationManager navigationManager { get; set; }
+        [Inject] public ISnackbar snackbar { get; set; }
+        [Inject] public IDialogService dialogService { get; set; }
+        [Inject] public IAdminService adminService { get; set; }
+        [Inject] public IActivityLogsService activityLogsService { get; set; }
 
         public ShowPasswordUtil showPasswordUtil = new ShowPasswordUtil();
         public ActivityLogsDTO adminLogs = new ActivityLogsDTO();
@@ -33,13 +30,13 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.LoginPage
         {
             isLoading = true;
 
-            var response = await AdminService.LoginAsync(login);
+            var response = await adminService.LoginAsync(login);
 
             if (response.IsSuccess)
             {
                 isLoading = false;
 
-                var fetchAdmin = await AdminService.GetAdminByEmail(login.Email);
+                var fetchAdmin = await adminService.GetAdminByEmail(login.Email);
 
                 adminLogs = new ActivityLogsDTO
                 {
@@ -51,8 +48,8 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.LoginPage
                     Timestamp = DateTime.UtcNow
                 };
 
-                await ActivityLogsService.RecordLogsActivity(adminLogs);
-                NavigationManager.NavigateTo("/dashboard");
+                await activityLogsService.RecordLogsActivity(adminLogs);
+                navigationManager.NavigateTo("/dashboard");
             }
             else
             {
@@ -72,13 +69,13 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.LoginPage
         {
             var parameters = new DialogParameters<FotgotPasswordDialog>();
 
-            var dialog = DialogService.Show<FotgotPasswordDialog>("Forgot Password", parameters, dialogOptions);
+            var dialog = dialogService.Show<FotgotPasswordDialog>("Forgot Password", parameters, dialogOptions);
 
             var result = await dialog.Result;
 
             if (!result.Canceled && result.Data is string resetToken)
             {
-                Snackbar.Add($"Reset Token Successfully Sent: {resetToken}", Severity.Info);
+                snackbar.Add($"Reset Token Successfully Sent: {resetToken}", Severity.Info);
             }
         }
     }

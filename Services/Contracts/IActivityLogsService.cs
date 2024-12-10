@@ -6,5 +6,6 @@ namespace CapstoneIdeaGenerator.Client.Services.Contracts
     {
         Task RecordLogsActivity(ActivityLogsDTO logs);
         Task<IEnumerable<ActivityLogsDTO>> GetAllActivityLogs();
+        Task LogAdminAction(string action);
     }
 }

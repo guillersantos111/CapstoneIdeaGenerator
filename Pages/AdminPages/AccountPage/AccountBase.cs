@@ -13,7 +13,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
         [Inject] IDialogService dialogService { get; set; }
         [Inject] ISnackbar Snackbar { get; set; }
         [Inject] NavigationManager navigationManager { get; set; }
-        [Inject] IIndependentActivityLogsService IndependentActivityLogsService { get; set; }
+        [Inject] IActivityLogsService activityLogsService { get; set; }
 
         public ICollection<AdminAccountDTO> Admins { get; set; } = new List<AdminAccountDTO>();
         public static AdminRegisterDTO adminRegister = new AdminRegisterDTO();
@@ -29,6 +29,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
         {
             await LoadAccounts();
         }
+
 
         public async Task LoadAccounts()
         {
@@ -53,13 +54,14 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
             }
         }
 
+
         public async Task RegisterOnClick()
         {
             try
             {
                 admin = await adminService.Register(adminRegister);
                 Snackbar.Add("Successfully Created Admin Account", Severity.Success);
-                await IndependentActivityLogsService.LogAdminAction("Created Account");
+                await activityLogsService.LogAdminAction("Created Account");
                 await LoadAccounts();
             }
             catch (Exception ex)
@@ -85,7 +87,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AccountPage
                 {
                     await adminService.RemoveAdmin(email);
                     Snackbar.Add("Account Removed Successfully", Severity.Success);
-                    await IndependentActivityLogsService.LogAdminAction("Remove Account");
+                    await activityLogsService.LogAdminAction("Remove Account");
                     await LoadAccounts();
 
                     await OnInitializedAsync();

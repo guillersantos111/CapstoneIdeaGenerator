@@ -10,7 +10,6 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminDashboard
         [Inject]  IActivityLogsService activityLogsService { get; set; }
         [Inject]  ISnackbar snackbar { get; set; }
         [Inject] NavigationManager navigationManager { get; set; }
-        [Inject] IIndependentActivityLogsService independentActivityLogsService { get; set; }
 
         public List<ActivityLogsDTO> activityLogs { get; private set; } = new List<ActivityLogsDTO>();
         public ActivityLogsDTO activityLogsDTO { get; set; } = new ActivityLogsDTO();
@@ -28,7 +27,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminDashboard
                 var response = await activityLogsService.GetAllActivityLogs();
                 if (response != null)
                 {
-                    await independentActivityLogsService.LogAdminAction("Viewed Dashboard");
+                    await activityLogsService.LogAdminAction("Viewed Dashboard");
                 }
                 activityLogs = response?.ToList() ?? new List<ActivityLogsDTO>();
 

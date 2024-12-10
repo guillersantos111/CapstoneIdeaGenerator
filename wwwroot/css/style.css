@@ -79,6 +79,7 @@ html, body {
     0% {
         transform: translateY(-100%) !important;
         opacity: 0 !important;
+        color: white;
     }
     100% {
         transform: translateY(0) !important;
@@ -90,6 +91,7 @@ html, body {
     animation: slideDown 0.5s ease-out !important;
     animation-fill-mode: forwards !important;
     opacity: 0 !important;
+    color: white;
 }
 
 
