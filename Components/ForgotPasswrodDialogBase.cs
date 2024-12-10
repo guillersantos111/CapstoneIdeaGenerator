@@ -10,10 +10,10 @@ namespace CapstoneIdeaGenerator.Client.Components
     {
         [Parameter] public AdminForgotPasswordDTO AdminForgot { get; set; } = new AdminForgotPasswordDTO();
         public readonly DialogOptions dialogOptions = new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, NoHeader = true };
-        [CascadingParameter] MudDialogInstance MudDialog { get; set; }
-        [Inject] IAdminService AuthenticationService { get; set; }
-        [Inject] IClipboardService ClipboardService { get; set; }
-        [Inject] IDialogService DialogService { get; set; }
+        [CascadingParameter] MudDialogInstance mudDialog { get; set; }
+        [Inject] IAdminService authenticationService { get; set; }
+        [Inject] IClipboardService clipboardService { get; set; }
+        [Inject] IDialogService dialogService { get; set; }
 
         public string ResetToken { get; set; }
         public string ErrorMessage { get; set; }
@@ -22,7 +22,7 @@ namespace CapstoneIdeaGenerator.Client.Components
         {
             try
             {
-                var response = await AuthenticationService.ForgotPassword(AdminForgot);
+                var response = await authenticationService.ForgotPassword(AdminForgot);
 
                 if (!string.IsNullOrWhiteSpace(response?.Token))
                 {
@@ -43,7 +43,7 @@ namespace CapstoneIdeaGenerator.Client.Components
 
         public async Task CopyTokenToClipboard()
         {
-            await ClipboardService.CopyText(ResetToken);
+            await clipboardService.CopyText(ResetToken);
 
             var parameters = new DialogParameters()
             {
@@ -51,14 +51,14 @@ namespace CapstoneIdeaGenerator.Client.Components
                 { "adminPasswordReset", new AdminPasswordResetDTO() }
             };
 
-            var dialog = DialogService.Show<ResetPasswordDialog>("Reset Password", parameters, dialogOptions);
+            var dialog = dialogService.Show<ResetPasswordDialog>("Reset Password", parameters, dialogOptions);
             
         }
 
 
         public void Cancel()
         {
-            MudDialog.Cancel();
+            mudDialog.Cancel();
         }
     }
 }

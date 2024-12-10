@@ -9,9 +9,9 @@ namespace CapstoneIdeaGenerator.Client.Components
     {
         [Parameter] public CapstonesDTO capstones { get; set; } = new CapstonesDTO();
 
-        [CascadingParameter] private MudDialogInstance MudDialog { get; set; }
-        [Inject] private ICapstoneService CapstoneService { get; set; }
-        [Inject] private ISnackbar Snackbar { get; set; }
+        [CascadingParameter] private MudDialogInstance mudDialog { get; set; }
+        [Inject] private ICapstoneService capstoneService { get; set; }
+        [Inject] private ISnackbar snackbar { get; set; }
 
         public async Task Save()
         {
@@ -19,24 +19,24 @@ namespace CapstoneIdeaGenerator.Client.Components
             {
                 if (capstones.CapstoneId == 0)
                 {
-                    await CapstoneService.AddCapstone(capstones);
+                    await capstoneService.AddCapstone(capstones);
                 }
                 else
                 {
-                    await CapstoneService.UpdateCapstone(capstones.CapstoneId, capstones);
+                    await capstoneService.UpdateCapstone(capstones.CapstoneId, capstones);
                 }
             }
             else
             {
-                Snackbar.Add("Error: Capstone Not Found", Severity.Error);
+                snackbar.Add("Error: Capstone Not Found", Severity.Error);
             }
 
-            MudDialog.Close(DialogResult.Ok(true));
+            mudDialog.Close(DialogResult.Ok(true));
         }
 
         public void Cancel()
         {
-            MudDialog.Cancel();
+            mudDialog.Cancel();
         }
     }
 }

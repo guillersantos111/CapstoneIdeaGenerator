@@ -10,9 +10,9 @@ namespace CapstoneIdeaGenerator.Client.Components
     {
         [Parameter] public string Token { get; set; }
         [Parameter] public AdminPasswordResetDTO adminPasswordReset { get; set; } = new AdminPasswordResetDTO();
-        [CascadingParameter] MudDialogInstance MudDialog { get; set; }
-        [Inject] IAdminService AuthenticationService { get; set; }
-        [Inject] ISnackbar Snackbar { get; set; }
+        [CascadingParameter] MudDialogInstance mudDialog { get; set; }
+        [Inject] IAdminService adminService { get; set; }
+        [Inject] ISnackbar snackbar { get; set; }
         public ShowPasswordUtil showPassword { get; set; } = new ShowPasswordUtil();
         public Response response { get; set; } = new Response();
 
@@ -39,7 +39,7 @@ namespace CapstoneIdeaGenerator.Client.Components
                     ConfirmPassword = adminPasswordReset.ConfirmPassword
                 };
 
-                var result = await AuthenticationService.ResetPassword(resetpassword);
+                var result = await adminService.ResetPassword(resetpassword);
 
                 if (result == null)
                 {
@@ -47,8 +47,8 @@ namespace CapstoneIdeaGenerator.Client.Components
                 }
                 else
                 {
-                    Snackbar.Add("Password Reset Successfully", Severity.Success);
-                    MudDialog.Close(DialogResult.Ok(true));
+                    snackbar.Add("Password Reset Successfully", Severity.Success);
+                    mudDialog.Close(DialogResult.Ok(true));
                 }
             }
             catch (Exception ex)
@@ -66,7 +66,7 @@ namespace CapstoneIdeaGenerator.Client.Components
 
         public void Cancel()
         {
-            MudDialog.Cancel();
+            mudDialog.Cancel();
         }
     }
 }

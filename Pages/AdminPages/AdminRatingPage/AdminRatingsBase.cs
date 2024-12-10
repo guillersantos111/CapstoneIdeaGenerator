@@ -10,9 +10,9 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
     {
         public List<RatingsDTO>? Ratings;
         public bool isLoading = false;
-        [Inject] IRatingsService RatingsService { get; set; }
-        [Inject] ISnackbar Snackbar { get; set; }
-        [Inject] NavigationManager NavigationManager { get; set; }
+        [Inject] IRatingsService ratingsService { get; set; }
+        [Inject] ISnackbar snackbar { get; set; }
+        [Inject] NavigationManager navigationManager { get; set; }
         [Inject] IActivityLogsService activityLogsService { get; set; }
 
         protected override async Task OnInitializedAsync()
@@ -25,7 +25,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
             try
             {
                 isLoading = true;
-                var response = await RatingsService.GetAllRatingsDetailes();
+                var response = await ratingsService.GetAllRatingsDetailes();
                 Ratings = response?.ToList() ?? new List<RatingsDTO>();
 
                 if (response != null)
@@ -35,7 +35,7 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
 
                 if (response == null)
                 {
-                    Snackbar.Add("No Ratings Found", Severity.Error);
+                    snackbar.Add("No Ratings Found", Severity.Error);
                 }
                 else
                 {
@@ -45,8 +45,8 @@ namespace CapstoneIdeaGenerator.Client.Pages.AdminPages.AdminRatingPage
             }
             catch (Exception ex)
             {
-                Snackbar.Add($"Exception Error: {ex.Message}", Severity.Error);
-                NavigationManager.NavigateTo("/home");
+                snackbar.Add($"Exception Error: {ex.Message}", Severity.Error);
+                navigationManager.NavigateTo("/home");
             }
 
             StateHasChanged();
